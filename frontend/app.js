@@ -7,7 +7,7 @@ var express = require("express"),
     port = parseInt(process.env.PORT, 10) || 80;
 
 app.get("/", function (req, res) {
-    res.redirect("index.html");
+    res.redirect("/public/index.html");
 });
 
 app.use(methodOverride());
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname));
 app.use(errorHandler({
     dumpExceptions: true,
     showStack: true

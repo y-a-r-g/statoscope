@@ -6,13 +6,22 @@ module view {
     }
 
     export class Control implements ICleanup {
+        static sType = "s-control";
+
         private _parent: Container;
         private _element: HTMLElement;
         private _layoutSettings: ILayoutSettings;
 
         constructor() {
             this._element = document.createElement("div");
-            this.element.classList.add("Control")
+            var proto = Object.getPrototypeOf(this);
+            while (proto) {
+                var name = proto.constructor.sType;
+                if (name) {
+                    this.element.classList.add(name);
+                }
+                proto = Object.getPrototypeOf(proto);
+            }
         }
 
         cleanup(): void {
@@ -38,7 +47,7 @@ module view {
         set layoutSettings(value: ILayoutSettings) {
             this._layoutSettings = value;
             if (this.parent) {
-                this.parent.layout.refresh();
+                this.parent.relayout();
             }
         }
 

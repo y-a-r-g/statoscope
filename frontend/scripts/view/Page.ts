@@ -3,20 +3,22 @@
 module view {
     "use strict";
 
-    export class Page extends Container {
+    export class Page extends view.Container {
+        static sType = "s-page";
 
-        constructor(){
+        constructor(options: any) {
             super(new view.layouts.CardLayout());
-            this.element.classList.add("Page")
-        }
-
-        init(...args: any[]): void {
             window.document.body.appendChild(this.element);
+            this.relayout();
         }
 
         cleanup(): void {
             window.document.body.removeChild(this.element);
             super.cleanup();
+        }
+
+        get title(): string {
+            return "Untitled";
         }
     }
 }

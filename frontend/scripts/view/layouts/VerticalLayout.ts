@@ -6,9 +6,10 @@ module view.layouts {
     }
 
     export class VerticalLayout extends AbstractLayout {
+        static sType = "s-vertical-layout";
 
         constructor() {
-            super("VerticalLayout");
+            super();
         }
 
         refresh(): void {

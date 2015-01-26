@@ -6,8 +6,8 @@ module view.layouts {
         private _container: view.Container;
         private _className: string;
 
-        constructor(className: string) {
-            this._className = className;
+        constructor() {
+            this._className = Object.getPrototypeOf(this).constructor.sType;
         }
 
         cleanup(): void {

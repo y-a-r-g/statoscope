@@ -4,13 +4,14 @@ module view {
     "use strict";
 
     export class Container extends view.Control {
+        static sType = "s-container";
+
         private _layout: ILayout;
         private _children: Control[] = [];
 
         constructor(layout: ILayout) {
             super();
             this.layout = layout;
-            this.element.classList.add("Container")
         }
 
         cleanup(): void {
@@ -32,7 +33,18 @@ module view {
 
             if (this._layout) {
                 this._layout.container = this;
+            }
+        }
+
+        relayout(): void {
+            if (this.layout) {
+                //TODO: make delayed
                 this._layout.refresh();
+                this._children.forEach(child => {
+                    if (child instanceof view.Container) {
+                        (<Container>child).relayout();
+                    }
+                });
             }
         }
 
@@ -45,7 +57,7 @@ module view {
             this._children.splice(index, 0, control);
             control.parent = this;
             this.element.insertBefore(control.element, this.element.children[index]);
-            this._layout.refresh();
+            this.relayout();
         }
 
         removeChild(control: Control): void {
@@ -59,7 +71,7 @@ module view {
             var deleted = this._children.splice(index, 1);
             deleted[0].parent = null;
             this.element.removeChild(deleted[0].element);
-            this._layout.refresh();
+            this.relayout();
         }
 
         get childrenCount(): number {

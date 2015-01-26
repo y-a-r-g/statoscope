@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                     target: "es5",
                     sourceMap: true,
                     declaration: true,
-                    basePath: "<%= path.scripts %>"
+                    basePath: "<%= path.scripts %>/"
                 }
             }
         },
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: "<%= path.resources %>/",
                         src: "**/*",
-                        dest: "<%= path.build %>/resources/"
+                        dest: "<%= path.build %>/"
                     },
                     {
                         expand: true,
