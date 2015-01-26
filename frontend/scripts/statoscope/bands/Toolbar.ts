@@ -1,3 +1,5 @@
+/// <reference path="../../view/Container.ts" />
+
 module statoscope.bands {
     "use strict";
 

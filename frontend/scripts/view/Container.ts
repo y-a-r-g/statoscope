@@ -1,7 +1,9 @@
+/// <reference path="./Control.ts" />
+
 module view {
     "use strict";
 
-    export class Container extends Control {
+    export class Container extends view.Control {
         private _layout: ILayout;
         private _children: Control[] = [];
 
@@ -42,6 +44,7 @@ module view {
             this.removeChild(control);
             this._children.splice(index, 0, control);
             control.parent = this;
+            this.element.insertBefore(control.element, this.element.children[index]);
             this._layout.refresh();
         }
 
@@ -55,6 +58,7 @@ module view {
         removeChildAt(index: number): void {
             var deleted = this._children.splice(index, 1);
             deleted[0].parent = null;
+            this.element.removeChild(deleted[0].element);
             this._layout.refresh();
         }
 

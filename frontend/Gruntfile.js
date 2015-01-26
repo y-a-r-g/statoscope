@@ -39,14 +39,14 @@ module.exports = function(grunt) {
         less: {
             debug: {
                 options: {
-                    paths: ["<%= path.styles %>/**/*.inc.less"],
+                    paths: "<%= path.styles %>/**/*.inc.less",
                     compress: false,
                     ieCompat: false,
                     sourceMap: true,
                     sourceMapURL: "styles.css.map"
                 },
                 files: {
-                    "<%= path.styles %>/styles.css": ["<%= path.scripts %>/include.less"]
+                    "<%= path.build %>/styles.css": "<%= path.styles %>/**/*.inc.less"
                 }
             }
         },
@@ -55,11 +55,15 @@ module.exports = function(grunt) {
             debug: {
                 files: [
                     {
-                        src: "<%= path.resources %>/**/*",
+                        expand: true,
+                        cwd: "<%= path.resources %>/",
+                        src: "**/*",
                         dest: "<%= path.build %>/resources/"
                     },
                     {
-                        src: "<%= path.pages %>/**/*",
+                        expand: true,
+                        cwd: "<%= path.pages %>/",
+                        src: "**/*",
                         dest: "<%= path.build %>/"
                     }
                 ]
@@ -87,7 +91,7 @@ module.exports = function(grunt) {
                 options: {
                     script: "app.js",
                     background: true,
-                    port: 80
+                    port: 3000
                 }
             }
         },

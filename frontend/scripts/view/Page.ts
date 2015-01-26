@@ -1,10 +1,12 @@
+/// <reference path="./Container.ts" />
+
 module view {
     "use strict";
 
     export class Page extends Container {
 
         constructor(){
-            super(new view.layouts.Card());
+            super(new view.layouts.CardLayout());
             this.element.classList.add("Page")
         }
 

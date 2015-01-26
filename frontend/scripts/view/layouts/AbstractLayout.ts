@@ -22,7 +22,7 @@ module view.layouts {
             return this._container;
         }
 
-        set container(value: view.Container): void {
+        set container(value: view.Container) {
             if (this._container) {
                 this._container.element.classList.remove(this._className);
             }

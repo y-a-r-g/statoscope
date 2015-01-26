@@ -1,3 +1,5 @@
+/// <reference path="../../view/Page.ts" />
+
 module statoscope.pages {
     "use strict";
 
@@ -8,9 +10,13 @@ module statoscope.pages {
         constructor() {
             super();
 
+            this.element.classList.add('Day');
+
             this._root = new view.Container(new view.layouts.VerticalLayout());
             this._toolbar = new statoscope.bands.Toolbar();
             this._root.addChild(this._toolbar);
+
+            this.addChild(this._root);
         }
 
         cleanup(): void {
