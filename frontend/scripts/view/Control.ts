@@ -1,10 +1,6 @@
 module view {
     "use strict";
 
-    export interface ICleanup {
-        cleanup(): void
-    }
-
     export class Control implements ICleanup {
         static sType = "s-control";
 

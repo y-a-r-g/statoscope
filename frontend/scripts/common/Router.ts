@@ -57,7 +57,7 @@ module common {
         }
     }
 
-    window.addEventListener('popstate', event => {
+    window.addEventListener('popstate', (event:PopStateEvent) => {
         if (event.state) {
             common.Router.navigate(event.state, true);
         }

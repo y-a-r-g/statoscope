@@ -1,0 +1,3 @@
+interface ICleanable {
+    cleanup(): void
+}
