@@ -1,3 +1,5 @@
+///<reference path="../../view/Container.ts" />
+
 module statoscope.bands {
 
     export interface IMarkPanelConfig {
@@ -23,7 +25,9 @@ module statoscope.bands {
             this._config = value;
 
             this._config.marks.forEach(markConfig => {
-                this._marks.push(statoscope.marks.create(markConfig));
+                var mark = statoscope.marks.createMark(markConfig);
+                this._marks.push(mark);
+                this.addChild(mark.control);
             });
         }
     }

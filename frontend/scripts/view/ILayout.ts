@@ -5,7 +5,7 @@ module view {
 
     }
 
-    export interface ILayout extends ICleanup {
+    export interface ILayout extends ICleanable {
         container: view.Container;
         refresh(): void
     }

@@ -28,6 +28,12 @@ module statoscope.pages {
             this._root.addChild(this._today);
 
             this._markPanel = new statoscope.bands.MarkPanel();
+            this._markPanel.config = {
+                marks: [
+                    {type: "check", label: "My first check mark", checked: true},
+                    {type: "check", label: "My second check mark", checked: false}
+                ]
+            };
             this._root.addChild(this._markPanel);
 
 

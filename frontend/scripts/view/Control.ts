@@ -1,7 +1,9 @@
+/// <reference path="../interfaces.ts" />
+
 module view {
     "use strict";
 
-    export class Control implements ICleanup {
+    export class Control implements ICleanable {
         static sType = "s-control";
 
         private _parent: Container;
