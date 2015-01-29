@@ -1,9 +1,9 @@
-/// <reference path="../interfaces.ts" />
+/// <reference path="EventSubscriber.ts" />
 
 module view {
     "use strict";
 
-    export class Control implements ICleanable {
+    export class Control extends EventSubscriber {
         static sType = "s-control";
 
         private _parent: Container;
@@ -11,6 +11,8 @@ module view {
         private _layoutSettings: ILayoutSettings;
 
         constructor() {
+            super();
+
             this._element = document.createElement("div");
             var proto = Object.getPrototypeOf(this);
             while (proto) {
@@ -24,6 +26,7 @@ module view {
 
         cleanup(): void {
             this.detach();
+            super.cleanup();
         }
 
         get parent(): Container {

@@ -7,7 +7,7 @@ module statoscope {
         common.Router.init();
     });
 
-    window.addEventListener('resize', function(event){
+    window.addEventListener('resize', () => {
         var page = common.Router.currentPage;
         if (page) {
             page.relayout();

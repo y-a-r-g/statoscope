@@ -11,9 +11,9 @@ module statoscope.bands {
         static sType = "s-today-band";
 
         private _date: moment.Moment;
-        private _prev: HTMLElement;
-        private _next: HTMLElement;
-        private _days: HTMLElement[] = [];
+        private _prev: HTMLButtonElement;
+        private _next: HTMLButtonElement;
+        private _days: HTMLButtonElement[] = [];
 
         constructor(date: moment.Moment) {
             super();
@@ -24,9 +24,6 @@ module statoscope.bands {
 
         cleanup(): void {
             super.cleanup();
-            this._prev.removeEventListener("click", this._onPrevClick);
-            this._days.forEach(day => day.removeEventListener("click", this._onDayClick));
-            this._next.removeEventListener("click", this._onNextClick);
         }
 
         get date(): moment.Moment {
@@ -39,26 +36,24 @@ module statoscope.bands {
         }
 
         private _build(): void {
-            this._prev = document.createElement("div");
+            this._prev = document.createElement("button");
             this._prev.classList.add("prev");
-            this._prev.addEventListener("click", this._onPrevClick);
-            this._prev.self = this;
+            this.addListener(this._prev, "click", this._onPrevClick);
             this._prev.innerHTML = "&nbsp;";
             this.element.appendChild(this._prev);
 
             for (var i = 0; i < 7; i++) {
-                var day = document.createElement("div");
+                var day = document.createElement("button");
                 day.classList.add("day");
                 day.classList.add("day-" + i);
-                day.addEventListener("click", this._onDayClick);
-                day.self = this;
+                this.addListener(day, "click", this._onDayClick);
                 this.element.appendChild(day);
                 this._days.push(day);
             }
 
-            this._next = document.createElement("div");
+            this._next = document.createElement("button");
             this._next.classList.add("next");
-            this._next.addEventListener("click", this._onNextClick);
+            this.addListener(this._next, "click", this._onNextClick);
             this._next.self = this;
             this.element.appendChild(this._next);
         }
@@ -80,10 +75,12 @@ module statoscope.bands {
                     "<div>" + date.format(format) + "</div>";
 
                 if (date.isSame(this.date, "day")) {
-                    this._days[i].classList.add("selected");
+                    this._days[i].classList.add("pressed");
+                    this._days[i].disabled = true;
                 }
                 else {
-                    this._days[i].classList.remove("selected");
+                    this._days[i].classList.remove("pressed");
+                    this._days[i].disabled = false;
                 }
 
                 if (date.isSame(now, "day")) {
@@ -105,8 +102,7 @@ module statoscope.bands {
         }
 
         private _onPrevClick(event): void {
-            var self = event.currentTarget.self,
-                date = moment(self.date).subtract(1, "days");
+            var date = moment(this.date).subtract(1, "days");
 
             common.Router.navigate({
                 page: "day",
@@ -115,8 +111,7 @@ module statoscope.bands {
         }
 
         private _onNextClick(event): void {
-            var self = event.currentTarget.self,
-                date = moment(self.date).add(1, "days");
+            var date = moment(this.date).add(1, "days");
 
             common.Router.navigate({
                 page: "day",
@@ -125,9 +120,8 @@ module statoscope.bands {
         }
 
         private _onDayClick(event): void {
-            var self = event.currentTarget.self,
-                index = self._days.indexOf(event.currentTarget),
-                date = moment(self.date).add(index - self.date.weekday(), "days");
+            var index = this._days.indexOf(event.currentTarget),
+                date = moment(this.date).add(index - this.date.weekday(), "days");
 
             common.Router.navigate({
                 page: "day",

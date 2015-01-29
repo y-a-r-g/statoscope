@@ -9,6 +9,7 @@ module statoscope.bands {
     export class MarkPanel extends view.Container {
         private _config: IMarkPanelConfig;
         private _marks: statoscope.marks.IMark[] = [];
+        private _editing: boolean;
 
         constructor() {
             super(new view.layouts.FreeLayout());
@@ -29,6 +30,14 @@ module statoscope.bands {
                 this._marks.push(mark);
                 this.addChild(mark.control);
             });
+        }
+
+        get editing(): boolean {
+            return this._editing;
+        }
+
+        set editing(value: boolean) {
+            this._editing = value;
         }
     }
 }

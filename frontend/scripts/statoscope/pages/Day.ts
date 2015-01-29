@@ -11,6 +11,7 @@ module statoscope.pages {
         private _root: view.Container;
         private _toolbar: statoscope.bands.Toolbar;
         private _today: statoscope.bands.Today;
+        private _markPanelHeader: statoscope.bands.MarkPanelHeader;
         private _markPanel: statoscope.bands.MarkPanel;
 
 
@@ -22,20 +23,21 @@ module statoscope.pages {
             this._root = new view.Container(new view.layouts.FreeLayout());
 
             this._toolbar = new statoscope.bands.Toolbar();
-            this._root.addChild(this._toolbar);
-
             this._today = new statoscope.bands.Today(this._date);
-            this._root.addChild(this._today);
-
             this._markPanel = new statoscope.bands.MarkPanel();
+            this._markPanelHeader = new statoscope.bands.MarkPanelHeader(this._markPanel);
+
             this._markPanel.config = {
                 marks: [
                     {type: "check", label: "My first check mark", checked: true},
                     {type: "check", label: "My second check mark", checked: false}
                 ]
             };
-            this._root.addChild(this._markPanel);
 
+            this._root.addChild(this._toolbar);
+            this._root.addChild(this._today);
+            this._root.addChild(this._markPanelHeader);
+            this._root.addChild(this._markPanel);
 
             this.addChild(this._root);
         }

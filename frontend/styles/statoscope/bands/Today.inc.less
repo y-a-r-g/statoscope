@@ -2,41 +2,38 @@
 
 .s-today-band {
   height: 50px;
+  padding: 0 10px;
+
   & > * {
     display: inline-block;
     overflow: hidden;
-    height: 36px;
+    height: 44px;
+    vertical-align: top;
   }
 
   .prev,
   .next {
     width: 8%;
     cursor: pointer;
-    height: 44px;
-    &:hover {
-      background-color: fadeout(@brand-color, 80%);
-    }
+  }
+
+  .prev {
+    .button-with-icon("images/today/prev.svg");
+  }
+
+  .next {
+    .button-with-icon("images/today/next.svg");
   }
 
   .day {
+    .button();
+
     width: 12%;
     text-align: center;
-    padding: 4px 0;
     cursor: pointer;
 
     &.today {
-      padding-top: 0;
-      border-top: 4px solid darken(@brand-color, 10%);
-    }
-
-    &:hover {
-      background-color: fadeout(@brand-color, 80%);
-    }
-
-    &.selected {
-      background-color: @brand-color;
-      color: @text-brand-color;
-      cursor: default;
+      font-weight: bold;
     }
 
     &.future {

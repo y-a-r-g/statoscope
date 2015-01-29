@@ -8,6 +8,7 @@ module statoscope.bands {
 
         constructor() {
             super(new view.layouts.CardLayout());
+            this.element.innerHTML = "Statoscope";
         }
     }
 }

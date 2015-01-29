@@ -1,4 +1,41 @@
-@font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
-@text-color: #262626;
-@text-brand-color: #eee8da;
-@brand-color: #b3422d;
+@font-family: Helvetica, Arial, sans-serif;
+@text-color: #333;
+@background-color: #ffffff;
+@text-over-brand-color: #f9f3e5;
+@brand-color: #26bdd4;
+
+.button() {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: fadeout(@brand-color, 80%);
+  }
+
+  &:active {
+    background-color: fadeout(@brand-color, 50%);
+    box-shadow: inset 0 0 20px 3px darken(fadeout(@brand-color, 50%), 8%);
+  }
+
+  &.pressed {
+    background-color: @brand-color;
+    box-shadow: inset 0 0 20px 3px darken(@brand-color, 8%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.button-with-icon(@icon-url) {
+  .button();
+  background: url(@icon-url) no-repeat center;
+}
