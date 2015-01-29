@@ -3,6 +3,7 @@
 .s-today-band {
   height: 50px;
   padding: 0 10px;
+  text-align: center;
 
   & > * {
     display: inline-block;
@@ -14,6 +15,7 @@
   .prev,
   .next {
     width: 8%;
+    max-width: @max-stretch-width * .08;
     cursor: pointer;
   }
 
@@ -29,6 +31,7 @@
     .button();
 
     width: 12%;
+    max-width: @max-stretch-width * .12;
     text-align: center;
     cursor: pointer;
 

@@ -1,13 +1,22 @@
 @import "../../theme";
 
-.s-mark-panel-toolbar {
+.s-mark-panel-header {
   padding: 2px 10px;
-  text-align: right;
+  text-align: center;
 
-  .settings {
-    .button-with-icon("images/mark-panel-toolbar/settings.svg");
-    width: 60px;
-    height: 36px;
+  & > div {
+    box-sizing: border-box;
+    padding: 0 30px;
     display: inline-block;
+    width: 100%;
+    max-width: @max-stretch-width;
+    text-align: right;
+
+    .settings {
+      .button-with-icon("images/mark-panel-toolbar/settings.svg");
+      width: 60px;
+      height: 36px;
+      display: inline-block;
+    }
   }
 }

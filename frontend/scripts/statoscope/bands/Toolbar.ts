@@ -3,12 +3,16 @@
 module statoscope.bands {
     "use strict";
 
-    export class Toolbar extends view.Container {
+    export class Toolbar extends view.Control {
         static sType = "s-toolbar-band";
 
+        private _bar: HTMLElement;
+
         constructor() {
-            super(new view.layouts.CardLayout());
-            this.element.innerHTML = "Statoscope";
+            super();
+            this._bar = document.createElement("div");
+            this._bar.innerHTML = "Statoscope";
+            this.element.appendChild(this._bar);
         }
     }
 }

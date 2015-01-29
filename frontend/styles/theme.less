@@ -4,6 +4,14 @@
 @text-over-brand-color: #f9f3e5;
 @brand-color: #26bdd4;
 
+@mark-min-width: 300px;
+//due to bug in less that prevent calculations in @media it needs to define all by hands
+@mark-min-width-2: 600px;//@mark-min-width * 2;
+@mark-min-width-3: 900px;//@mark-min-width * 3;
+@mark-min-width-4: 1200px;//@mark-min-width * 4;
+
+@max-stretch-width: @mark-min-width-4;
+
 .button() {
   border: none;
   padding: 0;

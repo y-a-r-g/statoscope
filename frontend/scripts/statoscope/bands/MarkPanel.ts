@@ -7,6 +7,8 @@ module statoscope.bands {
     }
 
     export class MarkPanel extends view.Container {
+        static sType = "s-mark-panel";
+
         private _config: IMarkPanelConfig;
         private _marks: statoscope.marks.IMark[] = [];
         private _editing: boolean;

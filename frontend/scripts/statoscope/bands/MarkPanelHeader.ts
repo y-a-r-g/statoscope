@@ -2,9 +2,11 @@ module statoscope.bands {
     "use strict";
 
     export class MarkPanelHeader extends view.Container {
-        static sType = "s-mark-panel-toolbar";
+        static sType = "s-mark-panel-header";
 
         private _markPanel: MarkPanel;
+
+        private _bar: HTMLElement;
         private _settingsButton: HTMLButtonElement;
 
         constructor(markPanel:MarkPanel) {
@@ -12,9 +14,13 @@ module statoscope.bands {
 
             this._markPanel = markPanel;
 
+            this._bar = document.createElement("div");
+
             this._settingsButton = document.createElement("button");
             this._settingsButton.classList.add("settings");
-            this.element.appendChild(this._settingsButton);
+            this._bar.appendChild(this._settingsButton);
+
+            this.element.appendChild(this._bar);
 
             this.addListener(this._settingsButton, "click", this._onSettingsButtonClick);
         }

@@ -1,4 +1,5 @@
 ///<reference path="factory.ts" />
+///<reference path="AbstractMark.ts" />
 
 module statoscope.marks {
     "use strict";
@@ -8,14 +9,14 @@ module statoscope.marks {
         label: string;
     }
 
-    export class CheckMark extends view.Control implements IMark {
+    export class CheckMark extends AbstractMark {
         static sType: string = "s-check-mark";
 
         private _checkbox: HTMLInputElement;
         private _label: HTMLLabelElement;
 
         constructor(config) {
-            super();
+            super(config);
 
             this._checkbox = document.createElement("input");
             this._checkbox.type = "checkbox";
@@ -30,10 +31,7 @@ module statoscope.marks {
         }
 
         cleanup(): void {
-        }
-
-        get control(): view.Control {
-            return this;
+            super.cleanup();
         }
     }
 
