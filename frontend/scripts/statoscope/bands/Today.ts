@@ -38,8 +38,9 @@ module statoscope.bands {
         private _build(): void {
             this._prev = document.createElement("button");
             this._prev.classList.add("prev");
-            this.addListener(this._prev, "click", this._onPrevClick);
             this._prev.innerHTML = "&nbsp;";
+            this._prev.title = common.i18n.tr("Previous day");
+            this.addListener(this._prev, "click", this._onPrevClick);
             this.element.appendChild(this._prev);
 
             for (var i = 0; i < 7; i++) {
@@ -53,8 +54,9 @@ module statoscope.bands {
 
             this._next = document.createElement("button");
             this._next.classList.add("next");
+            this._prev.innerHTML = "&nbsp;";
+            this._next.title = common.i18n.tr("Next day");
             this.addListener(this._next, "click", this._onNextClick);
-            this._next.self = this;
             this.element.appendChild(this._next);
         }
 

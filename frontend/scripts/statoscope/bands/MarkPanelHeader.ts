@@ -10,7 +10,7 @@ module statoscope.bands {
         private _settingsButton: HTMLButtonElement;
 
         constructor(markPanel:MarkPanel) {
-            super(new view.layouts.FreeLayout());
+            super();
 
             this._markPanel = markPanel;
 
@@ -18,6 +18,7 @@ module statoscope.bands {
 
             this._settingsButton = document.createElement("button");
             this._settingsButton.classList.add("settings");
+            this._settingsButton.title = common.i18n.tr("Setup widgets");
             this._bar.appendChild(this._settingsButton);
 
             this.element.appendChild(this._bar);

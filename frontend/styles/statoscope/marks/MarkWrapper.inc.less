@@ -1,0 +1,79 @@
+@import "../../theme";
+
+@mark-padding: 5px;
+
+.s-mark-wrapper {
+
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  text-align: left;
+  min-width: @mark-min-width;
+  width: 100%;
+
+  min-height: 80px;
+
+  @media (min-width: @mark-min-width-2) {
+    width: 50%;
+  }
+
+  @media (min-width: @mark-min-width-3) {
+    width: 33.333%;
+  }
+
+  @media (min-width: @mark-min-width-4) {
+    width: @mark-min-width;
+  }
+
+  .s-move-handle {
+    display: none;
+  }
+
+  .s-mark-controls {
+    display: none;
+  }
+
+  .s-abstract-mark {
+    position: relative;
+    margin: @mark-padding;
+  }
+}
+
+.editing {
+  @handle-width: 24px;
+  @controls-width: @handle-width;
+
+  .s-mark-wrapper {
+    .s-move-handle {
+      position: absolute;
+      display: block;
+      left: @mark-padding;
+      top: @mark-padding;
+      width: @handle-width;
+      bottom: @mark-padding;
+    }
+
+    .s-mark-controls {
+      position: absolute;
+      display: block;
+      left: @handle-width + @mark-padding;
+      top: @mark-padding;
+      width: @controls-width;
+      bottom: @mark-padding;
+      background-color: @brand-color;
+    }
+
+    .s-abstract-mark {
+      position: absolute;
+      left: @handle-width + @controls-width + @mark-padding;
+      top: @mark-padding;
+      right: @mark-padding;
+      bottom: @mark-padding;
+      border: 1px solid @brand-color;
+      border-left: none;
+      box-sizing: border-box;
+      margin: 0;
+    }
+  }
+
+}

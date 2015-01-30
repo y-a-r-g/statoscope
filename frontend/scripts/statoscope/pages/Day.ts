@@ -20,7 +20,7 @@ module statoscope.pages {
 
             this._date = moment(options && options.date);
 
-            this._root = new view.Container(new view.layouts.FreeLayout());
+            this._root = new view.Container();
 
             this._toolbar = new statoscope.bands.Toolbar();
             this._today = new statoscope.bands.Today(this._date);
@@ -30,7 +30,9 @@ module statoscope.pages {
             this._markPanel.config = {
                 marks: [
                     {type: "check", label: "My first check mark", checked: true},
-                    {type: "check", label: "My second check mark", checked: false}
+                    {type: "check", label: "My second check mark", checked: false},
+                    {type: "check", label: "My third check mark", checked: true},
+                    {type: "check", label: "My fourth check mark", checked: false},
                 ]
             };
 

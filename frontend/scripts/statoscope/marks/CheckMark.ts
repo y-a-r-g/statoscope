@@ -15,7 +15,7 @@ module statoscope.marks {
         private _checkbox: HTMLInputElement;
         private _label: HTMLLabelElement;
 
-        constructor(config) {
+        constructor(config:ICheckMarkConfig) {
             super(config);
 
             this._checkbox = document.createElement("input");
@@ -35,5 +35,5 @@ module statoscope.marks {
         }
     }
 
-    registerMark("check", config => new CheckMark(config));
+    registerMark("check", config => new CheckMark(<ICheckMarkConfig>config));
 }

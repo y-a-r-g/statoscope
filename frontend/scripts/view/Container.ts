@@ -9,15 +9,17 @@ module view {
         private _layout: ILayout;
         private _children: Control[] = [];
 
-        constructor(layout: ILayout) {
+        constructor(layout?: ILayout) {
             super();
             this.layout = layout;
         }
 
         cleanup(): void {
             super.cleanup();
-            this._children.forEach(child => child.cleanup());
-            this.layout.cleanup();
+            this.removeAllChildren();
+            if (this.layout) {
+                this.layout.cleanup();
+            }
         }
 
         get layout(): ILayout {
@@ -68,10 +70,15 @@ module view {
         }
 
         removeChildAt(index: number): void {
-            var deleted = this._children.splice(index, 1);
-            deleted[0].parent = null;
-            this.element.removeChild(deleted[0].element);
+            var deleted = this._children.splice(index, 1)[0];
+            this.element.removeChild(deleted.element);
+            deleted.parent = null;
+            deleted.cleanup();
             this.relayout();
+        }
+
+        removeAllChildren(): void {
+            this._children.forEach(child => child.cleanup());
         }
 
         get childrenCount(): number {

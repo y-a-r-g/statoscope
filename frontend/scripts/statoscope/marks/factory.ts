@@ -7,19 +7,19 @@ module statoscope.marks {
         type: string;
     }
 
-    export interface IMark extends ICleanable {
-        control: view.Control;
-    }
-
     export interface MarkBuilder {
-        (config: IMarkConfig): IMark;
+        (config: IMarkConfig): AbstractMark;
     }
 
-    export function createMark(config: IMarkConfig): IMark {
+    export function createMark(config: IMarkConfig): AbstractMark {
         return markBuilders[config.type](config);
     }
 
     export function registerMark(type: string, builder: MarkBuilder) {
         markBuilders[type] = builder;
+    }
+
+    export function getMarkTypes(): string[] {
+        return Object.keys(markBuilders);
     }
 }

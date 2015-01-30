@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8" height="8">
+    <desc iVinci="yes" version="4.5" gridStep="1" showGrid="yes" snapToGrid="no" codePlatform="0"/>
+    <g id="Layer1" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="4" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-3.12242,-3.12242,6.24484,6.24484)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.480397,0,0,0.480397,3.09375,3.21875)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M1.59375,3.21875 C1.59375,2.39032 2.26533,1.71875 3.09375,1.71875 C3.92218,1.71875 4.59375,2.39032 4.59375,3.21875 C4.59375,4.04718 3.92218,4.71875 3.09375,4.71875 C2.26533,4.71875 1.59375,4.04718 1.59375,3.21875 Z" style="stroke:none;fill-rule:evenodd;fill:#333333;fill-opacity:1;"/>
+        </g>
+        <g id="Shape2">
+            <desc shapeID="2" type="0" basicInfo-basicType="4" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-3.12242,-3.12242,6.24484,6.24484)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.480397,0,0,0.480397,3,3)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath2" d="M1.5,3 C1.5,2.17157 2.17158,1.5 3,1.5 C3.82843,1.5 4.5,2.17157 4.5,3 C4.5,3.82843 3.82843,4.5 3,4.5 C2.17158,4.5 1.5,3.82843 1.5,3 Z" style="stroke:none;fill-rule:evenodd;fill:#ffffff;fill-opacity:1;"/>
+        </g>
+    </g>
+</svg>

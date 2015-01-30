@@ -11,7 +11,7 @@ module statoscope.bands {
         constructor() {
             super();
             this._bar = document.createElement("div");
-            this._bar.innerHTML = "Statoscope";
+            this._bar.innerHTML = common.i18n.tr("Statoscope");
             this.element.appendChild(this._bar);
         }
     }

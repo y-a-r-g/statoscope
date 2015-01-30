@@ -10,11 +10,10 @@ module statoscope.bands {
         static sType = "s-mark-panel";
 
         private _config: IMarkPanelConfig;
-        private _marks: statoscope.marks.IMark[] = [];
         private _editing: boolean;
 
         constructor() {
-            super(new view.layouts.FreeLayout());
+            super();
         }
 
         get config(): IMarkPanelConfig {
@@ -22,15 +21,14 @@ module statoscope.bands {
         }
 
         set config(value: IMarkPanelConfig) {
-            this._marks.forEach(mark => mark.cleanup());
-            this._marks = [];
+            this.removeAllChildren();
 
             this._config = value;
 
             this._config.marks.forEach(markConfig => {
-                var mark = statoscope.marks.createMark(markConfig);
-                this._marks.push(mark);
-                this.addChild(mark.control);
+                var mark = new statoscope.marks.MarkWrapper(
+                    statoscope.marks.createMark(markConfig));
+                this.addChild(mark);
             });
         }
 
@@ -40,6 +38,13 @@ module statoscope.bands {
 
         set editing(value: boolean) {
             this._editing = value;
+            if (this._editing) {
+                this.element.classList.add("editing");
+
+            }
+            else {
+                this.element.classList.remove("editing");
+            }
         }
     }
 }
