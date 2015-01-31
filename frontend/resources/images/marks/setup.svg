@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
+    <desc iVinci="yes" version="4.5" gridStep="1" showGrid="yes" snapToGrid="yes" codePlatform="0"/>
+    <g id="Layer1" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-42.6515,-42.8127,85.303,85.6255)" text="" font-familyName="" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(0.222735,0,0,0.221897,10,10)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M19.481,5.11811 C19.4665,4.94902 19.3547,4.80368 19.1948,4.74576 C19.0347,4.6874 18.8556,4.72712 18.7351,4.84695 L16.2698,7.30268 L13.5371,6.44061 L12.6718,3.71816 L15.1368,1.26221 C15.2575,1.14216 15.2969,0.963536 15.2388,0.804214 C15.1802,0.644671 15.0346,0.533501 14.8646,0.518855 C13.3674,0.390377 11.9004,0.922928 10.8398,1.9796 C9.38732,3.42681 9.00265,5.54015 9.68378,7.34151 C9.60938,7.40409 9.53588,7.47021 9.46349,7.54166 L1.23475,15.277 C1.23186,15.2799 1.22896,15.283 1.22584,15.2859 C0.258058,16.2498 0.258058,17.8186 1.22584,18.7827 C2.19363,19.7469 3.75679,19.7351 4.72435,18.7712 C4.72858,18.7672 4.73237,18.7632 4.73615,18.759 L12.4332,10.4973 C12.5032,10.4272 12.5684,10.3538 12.6297,10.2783 C14.4385,10.9582 16.5612,10.5759 18.015,9.12778 C19.0754,8.07088 19.6102,6.60947 19.481,5.11811 M3.48438,17.7414 C3.12778,18.0966 2.55023,18.0964 2.19363,17.7414 C1.83725,17.3863 1.83725,16.8107 2.19363,16.4557 C2.55023,16.1007 3.12778,16.1007 3.48438,16.4557 C3.84076,16.8107 3.84076,17.3863 3.48438,17.7414 Z" style="stroke:none;fill-rule:nonzero;fill:#333333;fill-opacity:0.705882;"/>
+        </g>
+    </g>
+</svg>

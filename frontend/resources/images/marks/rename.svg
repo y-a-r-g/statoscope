@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
+    <desc iVinci="yes" version="4.5" gridStep="1" showGrid="no" snapToGrid="no" codePlatform="0"/>
+    <g id="Layer1" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-11.5985,-11.5984,23.1971,23.1968)" text="" font-familyName="" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(-0.862183,0,0,0.862183,10.0001,9.99994)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M4.82267,11.8391 L13.5583,3.10343 L12.934,2.48007 L4.19927,11.2157 L4.82267,11.8391 M15.9362,5.48391 L7.20307,14.217 L5.62357,12.6374 L14.3566,3.9044 L15.9362,5.48391 M16.7337,6.28143 L17.5183,7.06516 L8.78697,15.8008 L8.00327,15.0171 L16.7337,6.28143 M3.59747,11.8166 L8.18257,16.4035 L3.72167,18.352 L1.64637,16.2784 L3.59747,11.8166 M0.0280676,19.5246 L1.06867,17.1441 C1.11527,17.0415 1.20667,16.9673 1.31697,16.9466 C1.42817,16.9268 1.53947,16.9622 1.62047,17.0398 L2.96117,18.3813 C3.04047,18.4606 3.07587,18.5736 3.05347,18.6848 C3.03357,18.7943 2.95947,18.8865 2.85597,18.9322 L0.474667,19.9712 C0.347867,20.0272 0.198767,19.9996 0.0978661,19.9022 C0.00216675,19.8013 -0.0280323,19.6522 0.0280676,19.5246 M13.679,1.73514 L15.3154,0.0995836 C15.4482,-0.0331936 15.6629,-0.0331936 15.7948,0.0995836 L19.9005,4.20444 C20.0333,4.33721 20.0333,4.5519 19.9005,4.68467 L18.2649,6.31937 C18.1321,6.45215 17.9175,6.45215 17.7847,6.31937 L13.679,2.21452 C13.5471,2.08174 13.5471,1.86706 13.679,1.73514 Z" style="stroke:none;fill-rule:evenodd;fill:#333333;fill-opacity:0.705882;"/>
+        </g>
+    </g>
+</svg>
