@@ -9,11 +9,13 @@ module view {
         private _parent: Container;
         private _element: HTMLElement;
         private _layoutSettings: ILayoutSettings;
+        private _name: string;
 
-        constructor() {
+        constructor(element?: HTMLElement) {
             super();
 
-            this._element = document.createElement("div");
+            this._element = element || document.createElement("div");
+
             var proto = Object.getPrototypeOf(this);
             while (proto) {
                 var name = proto.constructor.sType;
@@ -55,6 +57,22 @@ module view {
         detach(): void {
             if (this.parent) {
                 this.parent.removeChild(this);
+            }
+        }
+
+        get name(): string {
+            return this._name;
+        }
+
+        set name(value: string) {
+            if (this._name) {
+                this._element.classList.remove("n-" + this._name);
+            }
+
+            this._name = value;
+
+            if (this._name) {
+                this._element.classList.add("n-" + this._name);
             }
         }
     }

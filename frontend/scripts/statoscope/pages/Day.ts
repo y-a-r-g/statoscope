@@ -29,10 +29,10 @@ module statoscope.pages {
 
             this._markPanel.config = {
                 marks: [
-                    {type: "check", label: "My first check mark", checked: true},
-                    {type: "check", label: "My second check mark", checked: false},
-                    {type: "check", label: "My third check mark", checked: true},
-                    {type: "check", label: "My fourth check mark", checked: false},
+                    {type: "check", title: "My first check mark", checked: true},
+                    {type: "check", title: "My second check mark", checked: false},
+                    {type: "check", title: "My third check mark", checked: true},
+                    {type: "check", title: "My fourth check mark", checked: false},
                 ]
             };
 

@@ -21,5 +21,19 @@ module statoscope.marks {
         get config(): IMarkConfig {
             return this._config;
         }
+
+        get title(): string {
+            return this._config.title;
+        }
+
+        set title(value: string) {
+            this._config.title = value;
+            this.updateTitle();
+            //TODO: save config
+        }
+
+        updateTitle() {
+
+        }
     }
 }

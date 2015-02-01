@@ -10,10 +10,11 @@ module statoscope.marks {
 
         constructor(mark: AbstractMark) {
             super();
+            this._mark = mark;
 
             this._moveHandle = new statoscope.controls.MoveHandle();
-            this._controls = new statoscope.controls.MarkControls();
-            this._mark = mark;
+            this._controls = new statoscope.controls.MarkControls(this._mark);
+
 
             this.addChild(this._moveHandle);
             this.addChild(this._controls);

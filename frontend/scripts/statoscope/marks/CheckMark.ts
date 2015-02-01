@@ -6,7 +6,6 @@ module statoscope.marks {
 
     export interface ICheckMarkConfig extends IMarkConfig {
         checked: boolean;
-        label: string;
     }
 
     export class CheckMark extends AbstractMark {
@@ -26,12 +25,18 @@ module statoscope.marks {
 
             this._label = document.createElement("label");
             this._label.setAttribute("for", this._checkbox.id);
-            this._label.innerText = config.label;
             this.element.appendChild(this._label);
+
+            this.updateTitle();
         }
 
         cleanup(): void {
             super.cleanup();
+        }
+
+        updateTitle() {
+            super.updateTitle();
+            this._label.innerHTML = this.title;
         }
     }
 

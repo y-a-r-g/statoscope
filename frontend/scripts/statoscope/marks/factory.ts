@@ -5,6 +5,7 @@ module statoscope.marks {
 
     export interface IMarkConfig {
         type: string;
+        title: string;
     }
 
     export interface MarkBuilder {
