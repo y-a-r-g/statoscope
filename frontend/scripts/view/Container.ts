@@ -9,8 +9,8 @@ module view {
         private _layout: ILayout;
         private _children: Control[] = [];
 
-        constructor(layout?: ILayout) {
-            super();
+        constructor(layout?: ILayout, element?: HTMLElement) {
+            super(element);
             this.layout = layout;
         }
 
@@ -20,6 +20,10 @@ module view {
             if (this.layout) {
                 this.layout.cleanup();
             }
+        }
+
+        get container(): HTMLElement {
+            return this.element;
         }
 
         get layout(): ILayout {
@@ -58,7 +62,7 @@ module view {
             this.removeChild(control);
             this._children.splice(index, 0, control);
             control.parent = this;
-            this.element.insertBefore(control.element, this.element.children[index]);
+            this.container.insertBefore(control.element, this.container.children[index]);
             this.relayout();
         }
 
@@ -71,7 +75,7 @@ module view {
 
         removeChildAt(index: number): void {
             var deleted = this._children.splice(index, 1)[0];
-            this.element.removeChild(deleted.element);
+            this.container.removeChild(deleted.element);
             deleted.parent = null;
             deleted.cleanup();
             this.relayout();

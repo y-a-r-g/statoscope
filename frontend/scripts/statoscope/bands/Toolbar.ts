@@ -3,16 +3,29 @@
 module statoscope.bands {
     "use strict";
 
-    export class Toolbar extends view.Control {
+    export class Toolbar extends view.Container {
         static sType = "s-toolbar-band";
 
-        private _bar: HTMLElement;
+        private _logo: statoscope.controls.Logo;
+        private _loadingIndicator: statoscope.controls.LoadingIndicator;
+        private _container: HTMLElement;
 
         constructor() {
             super();
-            this._bar = document.createElement("div");
-            this._bar.innerHTML = common.i18n.tr("Statoscope");
-            this.element.appendChild(this._bar);
+
+            this._container = document.createElement("div");
+            this.element.appendChild(this._container);
+
+
+            this._logo = new statoscope.controls.Logo();
+            this._loadingIndicator = new statoscope.controls.LoadingIndicator();
+
+            this.addChild(this._logo);
+            this.addChild(this._loadingIndicator);
+        }
+
+        get container(): HTMLElement {
+            return this._container;
         }
     }
 }

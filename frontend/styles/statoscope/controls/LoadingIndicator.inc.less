@@ -1,0 +1,88 @@
+@import "../../theme";
+
+.s-loading-indicator-blink(@name, @a, @b, @c, @d, @e, @f, @g, @h, @j, @k) {
+  @keyframes @name {
+    0% { background-color: fade(@brand-color, @a); }
+    10% { background-color: fade(@brand-color, @b); }
+    20% { background-color: fade(@brand-color, @c); }
+    30% { background-color: fade(@brand-color, @d); }
+    40% { background-color: fade(@brand-color, @e); }
+    50% { background-color: fade(@brand-color, @f); }
+    60% { background-color: fade(@brand-color, @g); }
+    70% { background-color: fade(@brand-color, @h); }
+    80% { background-color: fade(@brand-color, @j); }
+    90% { background-color: fade(@brand-color, @k); }
+    100% { background-color: fade(@brand-color, @a); }
+  }
+
+  @-webkit-keyframes @name {
+    0% { background-color: fade(@brand-color, @a); }
+    10% { background-color: fade(@brand-color, @b); }
+    20% { background-color: fade(@brand-color, @c); }
+    30% { background-color: fade(@brand-color, @d); }
+    40% { background-color: fade(@brand-color, @e); }
+    50% { background-color: fade(@brand-color, @f); }
+    60% { background-color: fade(@brand-color, @g); }
+    70% { background-color: fade(@brand-color, @h); }
+    80% { background-color: fade(@brand-color, @j); }
+    90% { background-color: fade(@brand-color, @k); }
+    100% { background-color: fade(@brand-color, @a); }
+  }
+
+  @-moz-keyframes @name {
+    0% { background-color: fade(@brand-color, @a); }
+    10% { background-color: fade(@brand-color, @b); }
+    20% { background-color: fade(@brand-color, @c); }
+    30% { background-color: fade(@brand-color, @d); }
+    40% { background-color: fade(@brand-color, @e); }
+    50% { background-color: fade(@brand-color, @f); }
+    60% { background-color: fade(@brand-color, @g); }
+    70% { background-color: fade(@brand-color, @h); }
+    80% { background-color: fade(@brand-color, @j); }
+    90% { background-color: fade(@brand-color, @k); }
+    100% { background-color: fade(@brand-color, @a); }
+  }
+}
+
+.animation(...) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
+.s-loading-indicator-blink(s-loading-indicator-blink-5, 0%, 20%, 40%, 60%, 80%, 100%, 80%, 60%, 40%, 20%);
+.s-loading-indicator-blink(s-loading-indicator-blink-4, 20%, 40%, 60%, 80%, 100%, 80%, 60%, 40%, 20%, 0%);
+.s-loading-indicator-blink(s-loading-indicator-blink-3, 40%, 60%, 80%, 100%, 80%, 60%, 40%, 20%, 0%, 20%);
+.s-loading-indicator-blink(s-loading-indicator-blink-2, 60%, 80%, 100%, 80%, 60%, 40%, 20%, 0%, 20%, 40%);
+.s-loading-indicator-blink(s-loading-indicator-blink-1, 80%, 100%, 80%, 60%, 40%, 20%, 0%, 20%, 40%, 60%);
+
+.s-loading-indicator {
+  & > div {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: transparent;
+    padding: 0;
+    margin: 12px 1px 0 1px;
+  }
+
+  & > div:nth-child(1) {
+    .animation(s-loading-indicator-blink-1 1s linear infinite);
+  }
+
+  & > div:nth-child(2) {
+    .animation(s-loading-indicator-blink-2 1s linear infinite);
+  }
+
+  & > div:nth-child(3) {
+    .animation(s-loading-indicator-blink-3 1s linear infinite);
+  }
+
+  & > div:nth-child(4) {
+    .animation(s-loading-indicator-blink-4 1s linear infinite);
+  }
+
+  & > div:nth-child(5) {
+    .animation(s-loading-indicator-blink-5 1s linear infinite);
+  }
+}

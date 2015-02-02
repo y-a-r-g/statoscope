@@ -2,8 +2,6 @@
 
 .s-toolbar-band {
   height: 50px;
-  font-size: 2em;
-  color: @brand-color;
   text-align: center;
 
   & > div {
@@ -13,5 +11,14 @@
     width: 100%;
     max-width: @max-stretch-width;
     text-align: left;
+
+    & > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .s-loading-indicator {
+      margin-left: 1px;
+    }
   }
 }
