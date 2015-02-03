@@ -43,14 +43,10 @@ module statoscope.controls {
         private _onDeleteButtonClick(): void {
             var result = window.confirm(common.i18n.tr("This mark will be deleted from all days."));
             if (result) {
+                var config = this._wrapper.mark.dayInfo.markPanelConfig;
+                config.marks = config.marks.filter(mark => mark !== this._wrapper.mark.config);
+                storage.instance().saveMarkPanelConfig(this._wrapper.mark.dayInfo.markPanelConfig);
                 this._wrapper.cleanup();
-                storage.instance().getMarkPanelConfig((err, config: storage.IMarkPanelConfig) => {
-                    if (err) {
-                        //TODO: handle error
-                    }
-                    config.marks = config.marks.filter(mark => mark !== this._wrapper.mark.config);
-                    storage.instance().saveMarkPanelConfig();
-                });
             }
         }
     }

@@ -1,40 +1,62 @@
 module statoscope.storage {
 
-    var DefaultMarkPanelConfig = {
+    var DefaultMarkPanelConfig: IMarkPanelConfig = {
         marks: [
-            {id: "1", type: "check", title: "My first check mark", checked: true},
-            {id: "2", type: "check", title: "My second check mark", checked: false},
-            {id: "3", type: "check", title: "My third check mark", checked: true},
-            {id: "4", type: "check", title: "My fourth check mark", checked: false},
+            {id: "1", type: "check", title: "My first check mark"},
+            {id: "2", type: "check", title: "My second check mark"},
+            {id: "3", type: "check", title: "My third check mark"},
+            {id: "4", type: "check", title: "My fourth check mark"},
         ]
     };
 
-    export class Local implements IStorage {
+    var DefaultDayData: IDayData = { marks: [] };
 
-        private MarkPanelConfigDefault = "mark-panel-config";
-        private _markPanelConfig: IMarkPanelConfig;
+    export class Local implements IStorage {
+        private MarkPanelConfig = "mark-panel-config";
+        private DayData = "day-data-";
 
         constructor() {
 
         }
 
-        getMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void {
+        loadMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void {
             statoscope.bands.Toolbar.indicator.show();
 
-            if (!this._markPanelConfig) {
-                var config = JSON.parse(localStorage.getItem(this.MarkPanelConfigDefault));
-                this._markPanelConfig = config || DefaultMarkPanelConfig;
-            }
-            callback.call(context, null, this._markPanelConfig);
+            var config = JSON.parse(localStorage.getItem(this.MarkPanelConfig))
+                || utils.clone(DefaultMarkPanelConfig);
+            callback.call(context, null, config);
 
             statoscope.bands.Toolbar.indicator.hide();
         }
 
-        saveMarkPanelConfig(callback?: Callback, context?: any): void {
+        saveMarkPanelConfig(config: IMarkPanelConfig, callback?: Callback, context?: any): void {
             statoscope.bands.Toolbar.indicator.show();
 
-            localStorage.setItem(this.MarkPanelConfigDefault,
-                JSON.stringify(this._markPanelConfig));
+            localStorage.setItem(this.MarkPanelConfig,
+                JSON.stringify(config));
+
+            if (callback) {
+                callback.call(context);
+            }
+
+            statoscope.bands.Toolbar.indicator.hide();
+        }
+
+        loadDayData(date: moment.Moment, callback: DayDataCallback, context: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
+            var dayData = JSON.parse(localStorage.getItem(this.DayData +
+                date.format(statoscope.utils.systemDateFormat))) || utils.clone(DefaultDayData);
+            callback.call(context, null, dayData);
+
+            statoscope.bands.Toolbar.indicator.hide();
+        }
+
+        saveDayData(date: moment.Moment, data: IDayData, callback: Callback, context: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
+            localStorage.setItem(this.DayData + date.format(statoscope.utils.systemDateFormat),
+                JSON.stringify(data));
 
             if (callback) {
                 callback.call(context);

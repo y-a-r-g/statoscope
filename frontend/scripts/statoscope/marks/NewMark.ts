@@ -11,8 +11,8 @@ module statoscope.marks {
     export class NewMark extends AbstractMark {
         static sType: string = "s-new-mark";
 
-        constructor(config: INewMarkConfig) {
-            super(config);
+        constructor(config: storage.IMarkConfig, dayInfo: utils.IDayInfo) {
+            super(config, dayInfo);
         }
 
         cleanup(): void {
@@ -20,5 +20,5 @@ module statoscope.marks {
         }
     }
 
-    registerMark("new", config => new NewMark(<INewMarkConfig>config));
+    registerMark("new", (config, info) => new NewMark(<INewMarkConfig>config, info));
 }

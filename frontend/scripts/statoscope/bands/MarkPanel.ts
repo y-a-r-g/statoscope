@@ -8,24 +8,20 @@ module statoscope.bands {
         private _config: storage.IMarkPanelConfig;
         private _editing: boolean;
 
-        constructor() {
+        constructor(config: storage.IMarkPanelConfig, dayInfo: utils.IDayInfo) {
             super();
+
+            this._config = config;
+
+            this._config.marks.forEach(markConfig => {
+                var mark = new statoscope.marks.MarkWrapper(
+                    statoscope.marks.createMark(markConfig, dayInfo));
+                this.addChild(mark);
+            });
         }
 
         get config(): storage.IMarkPanelConfig {
             return this._config;
-        }
-
-        set config(value: storage.IMarkPanelConfig) {
-            this.removeAllChildren();
-
-            this._config = value;
-
-            this._config.marks.forEach(markConfig => {
-                var mark = new statoscope.marks.MarkWrapper(
-                    statoscope.marks.createMark(markConfig));
-                this.addChild(mark);
-            });
         }
 
         get editing(): boolean {
