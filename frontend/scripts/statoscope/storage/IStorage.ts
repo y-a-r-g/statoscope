@@ -2,6 +2,7 @@ module statoscope.storage {
     "use strict";
 
     export interface IMarkConfig {
+        id: string;
         type: string;
         title: string;
     }
@@ -19,8 +20,8 @@ module statoscope.storage {
     }
 
     export interface IStorage {
-        loadMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void;
-        saveMarkPanelConfig(callback: Callback, context?: any): void;
+        getMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void;
+        saveMarkPanelConfig(callback?: Callback, context?: any): void;
     }
 
     var _instance: IStorage;

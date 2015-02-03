@@ -30,10 +30,7 @@ module statoscope.marks {
             this._config.title = value;
             this.updateTitle();
 
-            statoscope.bands.Toolbar.indicator.show();
-            statoscope.storage.instance().saveMarkPanelConfig(() => {
-                statoscope.bands.Toolbar.indicator.hide();
-            });
+            statoscope.storage.instance().saveMarkPanelConfig();
         }
 
         updateTitle() {

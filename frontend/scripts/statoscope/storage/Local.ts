@@ -2,10 +2,10 @@ module statoscope.storage {
 
     var DefaultMarkPanelConfig = {
         marks: [
-            {type: "check", title: "My first check mark", checked: true},
-            {type: "check", title: "My second check mark", checked: false},
-            {type: "check", title: "My third check mark", checked: true},
-            {type: "check", title: "My fourth check mark", checked: false},
+            {id: "1", type: "check", title: "My first check mark", checked: true},
+            {id: "2", type: "check", title: "My second check mark", checked: false},
+            {id: "3", type: "check", title: "My third check mark", checked: true},
+            {id: "4", type: "check", title: "My fourth check mark", checked: false},
         ]
     };
 
@@ -18,16 +18,29 @@ module statoscope.storage {
 
         }
 
-        loadMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void {
-            var config = JSON.parse(localStorage.getItem(this.MarkPanelConfigDefault));
-            this._markPanelConfig = config || DefaultMarkPanelConfig;
+        getMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
+            if (!this._markPanelConfig) {
+                var config = JSON.parse(localStorage.getItem(this.MarkPanelConfigDefault));
+                this._markPanelConfig = config || DefaultMarkPanelConfig;
+            }
             callback.call(context, null, this._markPanelConfig);
+
+            statoscope.bands.Toolbar.indicator.hide();
         }
 
-        saveMarkPanelConfig(callback: Callback, context?: any): void {
+        saveMarkPanelConfig(callback?: Callback, context?: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
             localStorage.setItem(this.MarkPanelConfigDefault,
                 JSON.stringify(this._markPanelConfig));
-            callback.call(context);
+
+            if (callback) {
+                callback.call(context);
+            }
+
+            statoscope.bands.Toolbar.indicator.hide();
         }
     }
 }

@@ -13,7 +13,7 @@ module statoscope.marks {
             this._mark = mark;
 
             this._moveHandle = new statoscope.controls.MoveHandle();
-            this._controls = new statoscope.controls.MarkControls(this._mark);
+            this._controls = new statoscope.controls.MarkControls(this);
 
 
             this.addChild(this._moveHandle);

@@ -33,13 +33,11 @@ module statoscope.pages {
 
             this.addChild(this._root);
 
-            statoscope.bands.Toolbar.indicator.show();
-            storage.instance().loadMarkPanelConfig((err, config) => {
+            storage.instance().getMarkPanelConfig((err, config) => {
                 if (err) {
                     //TODO: handle error
                 }
                 this._markPanel.config = config;
-                statoscope.bands.Toolbar.indicator.hide();
             });
         }
 

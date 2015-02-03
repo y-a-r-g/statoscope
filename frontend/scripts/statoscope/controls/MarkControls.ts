@@ -6,15 +6,16 @@ module statoscope.controls {
     export class MarkControls extends view.Container {
         static sType = "s-mark-controls";
 
-        private _mark: statoscope.marks.AbstractMark;
+        private _wrapper: statoscope.marks.MarkWrapper;
+
         private _renameButton: view.controls.IconButton;
         private _setupButton: view.controls.IconButton;
         private _removeButton: view.controls.IconButton;
 
-        constructor(mark: statoscope.marks.AbstractMark) {
+        constructor(wrapper: statoscope.marks.MarkWrapper) {
             super();
 
-            this._mark = mark;
+            this._wrapper = wrapper;
 
             this._renameButton = new view.controls.IconButton("images/marks/rename.svg");
             this._renameButton.onClick.addHandler(this._onRenameButtonClick, this);
@@ -29,9 +30,9 @@ module statoscope.controls {
         }
 
         private _onRenameButtonClick(): void {
-            var result = window.prompt(common.i18n.tr("Edit title"), this._mark.title);
+            var result = window.prompt(common.i18n.tr("Edit title"), this._wrapper.mark.title);
             if (result !== null) {
-                this._mark.title = result;
+                this._wrapper.mark.title = result;
             }
         }
 
@@ -41,6 +42,16 @@ module statoscope.controls {
 
         private _onDeleteButtonClick(): void {
             var result = window.confirm(common.i18n.tr("This mark will be deleted from all days."));
+            if (result) {
+                this._wrapper.cleanup();
+                storage.instance().getMarkPanelConfig((err, config: storage.IMarkPanelConfig) => {
+                    if (err) {
+                        //TODO: handle error
+                    }
+                    config.marks = config.marks.filter(mark => mark !== this._wrapper.mark.config);
+                    storage.instance().saveMarkPanelConfig();
+                });
+            }
         }
     }
 }
