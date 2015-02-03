@@ -4,7 +4,7 @@
 module statoscope.marks {
     "use strict";
 
-    export interface ICheckMarkConfig extends IMarkConfig {
+    export interface ICheckMarkConfig extends storage.IMarkConfig {
         checked: boolean;
     }
 

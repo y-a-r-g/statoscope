@@ -6,7 +6,7 @@ module statoscope.controls {
 
         constructor() {
             super();
-            this.element.innerHTML = "Statoscope";
+            this.element.innerHTML = common.i18n.tr("Statoscope");
         }
     }
 }

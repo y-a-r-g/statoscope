@@ -2,25 +2,21 @@
 
 module statoscope.bands {
 
-    export interface IMarkPanelConfig {
-        marks: statoscope.marks.IMarkConfig[];
-    }
-
     export class MarkPanel extends view.Container {
         static sType = "s-mark-panel";
 
-        private _config: IMarkPanelConfig;
+        private _config: storage.IMarkPanelConfig;
         private _editing: boolean;
 
         constructor() {
             super();
         }
 
-        get config(): IMarkPanelConfig {
+        get config(): storage.IMarkPanelConfig {
             return this._config;
         }
 
-        set config(value: IMarkPanelConfig) {
+        set config(value: storage.IMarkPanelConfig) {
             this.removeAllChildren();
 
             this._config = value;

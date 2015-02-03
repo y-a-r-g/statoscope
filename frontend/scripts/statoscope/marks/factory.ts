@@ -3,16 +3,11 @@ module statoscope.marks {
 
     var markBuilders = {};
 
-    export interface IMarkConfig {
-        type: string;
-        title: string;
-    }
-
     export interface MarkBuilder {
-        (config: IMarkConfig): AbstractMark;
+        (config: storage.IMarkConfig): AbstractMark;
     }
 
-    export function createMark(config: IMarkConfig): AbstractMark {
+    export function createMark(config: storage.IMarkConfig): AbstractMark {
         return markBuilders[config.type](config);
     }
 

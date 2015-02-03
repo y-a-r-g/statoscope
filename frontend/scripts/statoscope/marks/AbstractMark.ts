@@ -6,7 +6,7 @@ module statoscope.marks {
     export class AbstractMark extends view.Control {
         static sType: string = "s-abstract-mark";
 
-        private _config: IMarkConfig;
+        private _config: storage.IMarkConfig;
 
         constructor(config) {
             super();
@@ -18,7 +18,7 @@ module statoscope.marks {
             super.cleanup();
         }
 
-        get config(): IMarkConfig {
+        get config(): storage.IMarkConfig {
             return this._config;
         }
 
@@ -29,7 +29,11 @@ module statoscope.marks {
         set title(value: string) {
             this._config.title = value;
             this.updateTitle();
-            //TODO: save config
+
+            statoscope.bands.Toolbar.indicator.show();
+            statoscope.storage.instance().saveMarkPanelConfig(() => {
+                statoscope.bands.Toolbar.indicator.hide();
+            });
         }
 
         updateTitle() {

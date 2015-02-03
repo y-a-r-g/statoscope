@@ -4,7 +4,7 @@
 module statoscope.marks {
     "use strict";
 
-    export interface INewMarkConfig extends IMarkConfig {
+    export interface INewMarkConfig extends storage.IMarkConfig {
         markPanel: statoscope.bands.MarkPanel
     }
 

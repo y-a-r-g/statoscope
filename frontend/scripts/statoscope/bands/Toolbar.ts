@@ -6,6 +6,8 @@ module statoscope.bands {
     export class Toolbar extends view.Container {
         static sType = "s-toolbar-band";
 
+        static indicator: statoscope.controls.LoadingIndicator;
+
         private _logo: statoscope.controls.Logo;
         private _loadingIndicator: statoscope.controls.LoadingIndicator;
         private _container: HTMLElement;
@@ -19,9 +21,12 @@ module statoscope.bands {
 
             this._logo = new statoscope.controls.Logo();
             this._loadingIndicator = new statoscope.controls.LoadingIndicator();
+            this._loadingIndicator.hide();
 
             this.addChild(this._logo);
             this.addChild(this._loadingIndicator);
+
+            Toolbar.indicator = this._loadingIndicator;
         }
 
         get container(): HTMLElement {

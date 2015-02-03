@@ -14,7 +14,6 @@ module statoscope.pages {
         private _markPanelHeader: statoscope.bands.MarkPanelHeader;
         private _markPanel: statoscope.bands.MarkPanel;
 
-
         constructor(options: any) {
             super(options);
 
@@ -27,21 +26,21 @@ module statoscope.pages {
             this._markPanel = new statoscope.bands.MarkPanel();
             this._markPanelHeader = new statoscope.bands.MarkPanelHeader(this._markPanel);
 
-            this._markPanel.config = {
-                marks: [
-                    {type: "check", title: "My first check mark", checked: true},
-                    {type: "check", title: "My second check mark", checked: false},
-                    {type: "check", title: "My third check mark", checked: true},
-                    {type: "check", title: "My fourth check mark", checked: false},
-                ]
-            };
-
             this._root.addChild(this._toolbar);
             this._root.addChild(this._today);
             this._root.addChild(this._markPanelHeader);
             this._root.addChild(this._markPanel);
 
             this.addChild(this._root);
+
+            statoscope.bands.Toolbar.indicator.show();
+            storage.instance().loadMarkPanelConfig((err, config) => {
+                if (err) {
+                    //TODO: handle error
+                }
+                this._markPanel.config = config;
+                statoscope.bands.Toolbar.indicator.hide();
+            });
         }
 
         cleanup(): void {
