@@ -3,81 +3,90 @@
 @mark-padding: 5px;
 
 .s-mark-wrapper {
-
   display: inline-block;
   position: relative;
   vertical-align: top;
   text-align: left;
   min-width: @mark-min-width;
+  max-width: @mark-max-width;
+  padding: @mark-padding;
   width: 100%;
+  min-height: 48px;
 
-  min-height: 80px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: border .5s;
 
-  @media (min-width: @mark-min-width-2) {
-    width: 50%;
-  }
-
-  @media (min-width: @mark-min-width-3) {
-    width: 33.333%;
-  }
-
-  @media (min-width: @mark-min-width-4) {
-    width: @mark-min-width;
+  &:hover {
+    border: 1px solid fade(@text-color, 20%) !important;
   }
 
   .s-move-handle {
-    display: none;
+    position: absolute;
+    width: 0;
+    transition: width 0.5s;
+    opacity: .2;
   }
 
   .s-mark-controls {
+    position: absolute;
     display: none;
+    width: 0;
+    right: 0;
   }
 
   .s-abstract-mark {
     position: relative;
-    margin: @mark-padding;
+    transition: margin-left .5s, margin-right .5s;
   }
 }
 
 .editing {
   @handle-width: 24px;
-  @controls-width: @handle-width;
 
   .s-mark-wrapper {
     .s-move-handle {
-      position: absolute;
       display: block;
-      left: @mark-padding;
+      left: 0;
       top: @mark-padding;
       width: @handle-width;
       bottom: @mark-padding;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
+      transition: opacity .5s;
+    }
+
+    @control-button-size: 36px;
+
+    .s-abstract-mark {
+      margin-left: @handle-width;
+      margin-right: @control-button-size * 3 + @mark-padding;
     }
 
     .s-mark-controls {
-      position: absolute;
       display: block;
-      left: @handle-width + @mark-padding;
-      top: @mark-padding;
-      width: @controls-width;
-      bottom: @mark-padding;
-      background-color: @brand-color;
+      box-sizing: content-box;
+      top: 50%;
+      margin-top: -0.5 * @control-button-size;
+      height: @control-button-size;
+      padding: 0 @mark-padding;
+      width: @control-button-size * 3;
+      opacity: 0;
+      transition: opacity .5s;
+
+      .s-icon-button {
+        width: @control-button-size;
+        height: @control-button-size;
+      }
     }
 
-    .s-abstract-mark {
-      position: absolute;
-      left: @handle-width + @controls-width + @mark-padding;
-      top: @mark-padding;
-      right: @mark-padding;
-      bottom: @mark-padding;
-      border: 1px solid @brand-color;
-      border-bottom-right-radius: 3px;
-      border-top-right-radius: 3px;
-      border-left: none;
-      box-sizing: border-box;
-      margin: 0;
+    &:hover {
+
+      .s-move-handle {
+        opacity: .8;
+      }
+
+      .s-mark-controls {
+        opacity: 1;
+      }
     }
   }
-
 }
