@@ -1,12 +1,15 @@
 module.exports = function(grunt) {
+
+    var frontendPath = grunt.option("frontendPath") || ".";
+
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         path: {
-            scripts: "./scripts",
-            styles: "./styles",
-            resources: "./resources",
-            pages: "./pages",
-            build: "./public"
+            scripts: frontendPath + "/scripts",
+            styles: frontendPath + "/styles",
+            resources: frontendPath + "/resources",
+            pages: frontendPath + "/pages",
+            build: frontendPath + "/public"
         },
 
         clean: {
