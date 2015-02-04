@@ -10,9 +10,9 @@ module common {
         private static _pages = {};
         private static _currentPage: view.Page;
 
-        static defaultOptions:INavigateOptions;
+        static defaultOptions: INavigateOptions;
 
-        static registerPage(name: string, page:any): void {
+        static registerPage(name: string, page: any): void {
             Router._pages[name] = page;
         }
 
@@ -21,7 +21,7 @@ module common {
                 if (!suppressHistoryUpdate) {
                     var url = "#" + Object.keys(options).
                             map(key => encodeURIComponent(key) + "=" +
-                                        encodeURIComponent(options[key])).join('&');
+                            encodeURIComponent(options[key])).join('&');
                     history.pushState(options, Router._currentPage.title, url);
                 }
                 Router._currentPage.cleanup();
@@ -46,7 +46,7 @@ module common {
                     });
                     Router.navigate(<INavigateOptions>options);
                 }
-                catch(err) {
+                catch (err) {
                     Router._currentPage = null;
                     Router.navigate(Router.defaultOptions);
                 }
@@ -57,7 +57,7 @@ module common {
         }
     }
 
-    window.addEventListener('popstate', (event:PopStateEvent) => {
+    window.addEventListener('popstate', (event: PopStateEvent) => {
         if (event.state) {
             common.Router.navigate(event.state, true);
         }

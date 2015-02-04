@@ -22,7 +22,7 @@ module statoscope.pages {
             this._date = moment(options && options.date);
             this._root = new view.Container();
 
-            this._toolbar = new statoscope.bands.Toolbar();
+            this._toolbar = new statoscope.bands.Toolbar(this);
             this._today = new statoscope.bands.Today(this._date);
 
             this._root.addChild(this._toolbar);
@@ -49,7 +49,7 @@ module statoscope.pages {
         }
 
         get title(): string {
-            return this._date.format("ll") + " –  Statoscope";
+            return this._date.format("ll") + common.i18n.tr(" –  Statoscope");
         }
 
         get date(): moment.Moment {

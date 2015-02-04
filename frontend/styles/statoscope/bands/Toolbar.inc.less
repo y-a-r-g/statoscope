@@ -1,16 +1,17 @@
 @import "../../theme";
 
 .s-toolbar-band {
-  height: 50px;
   text-align: center;
 
   & > div {
     box-sizing: border-box;
-    padding: 3px 30px;
+    padding: 0 30px;
     display: inline-block;
     width: 100%;
     max-width: @max-stretch-width;
     text-align: left;
+    border-bottom: 1px solid fade(@text-color, 20%);
+    margin-bottom: 14px;
 
     & > * {
       display: inline-block;
@@ -19,6 +20,17 @@
 
     .s-loading-indicator {
       margin-left: 1px;
+    }
+
+    .s-text-button {
+      padding: 3px 10px;
+      margin: 12px 2px 2px 2px;
+      font-size: 1.2em;
+      color: @brand-color;
+
+      &.pressed {
+        color: @text-over-brand-color;
+      }
     }
   }
 }

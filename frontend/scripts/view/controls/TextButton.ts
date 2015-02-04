@@ -3,15 +3,15 @@
 module view.controls {
     "use strict";
 
-    export class IconButton extends view.Control {
-        static sType = "s-icon-button";
+    export class TextButton extends view.Control {
+        static sType = "s-text-button";
 
         private _clickAction: view.Action = new view.Action();
-        private _icon: string;
+        private _label: string;
 
-        constructor(icon?: string) {
+        constructor(label?: string) {
             super(document.createElement("button"));
-            this.icon = icon;
+            this.label = label || "";
             this.addListener(this.element, "click", this._onButtonClick);
         }
 
@@ -28,13 +28,13 @@ module view.controls {
             this.onClick.trigger();
         }
 
-        get icon(): string {
-            return this._icon;
+        get label(): string {
+            return this._label;
         }
 
-        set icon(value: string) {
-            this._icon = value;
-            this.element.style.backgroundImage = "url('" + this._icon + "')";
+        set label(value: string) {
+            this._label = value;
+            this.element.innerHTML = this._label;
         }
     }
 }
