@@ -27,7 +27,7 @@
       left: 50%;
       top: 50%;
       background-color: @positive-color;
-      transition: background-color .5s, transform .5s, width .5s, margin-left .5s, margin-top .5s;
+      transition: .5s;
     }
 
     div:nth-child(1) {
@@ -71,7 +71,7 @@
       right: 18px;
       
       div {
-        transform: rotate(135deg);
+        .transform(rotate(135deg));
       }
             
       &.invalid {
@@ -84,7 +84,7 @@
         div {
           left: 45%;
           top: 53%;
-          transform: rotate(405deg);
+          .transform(rotate(405deg));
         }
         
         div:nth-child(1) {
