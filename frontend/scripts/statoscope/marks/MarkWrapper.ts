@@ -12,12 +12,13 @@ module statoscope.marks {
             super();
             this._mark = mark;
 
-            this._moveHandle = new statoscope.controls.MoveHandle();
-            this._controls = new statoscope.controls.MarkControls(this);
-
-
-            this.addChild(this._moveHandle);
-            this.addChild(this._controls);
+            if (this._mark.editable) {
+                this._moveHandle = new statoscope.controls.MoveHandle();
+                this._controls = new statoscope.controls.MarkControls(this);
+                this.addChild(this._moveHandle);
+                this.addChild(this._controls);
+            }
+            
             this.addChild(this._mark);
         }
 

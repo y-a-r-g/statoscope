@@ -34,7 +34,7 @@ module view.controls {
 
         set icon(value: string) {
             this._icon = value;
-            this.element.style.backgroundImage = "url('" + this._icon + "')";
+            this.element.style.backgroundImage = this.icon ? "url('" + this._icon + "')" : "";
         }
     }
 }

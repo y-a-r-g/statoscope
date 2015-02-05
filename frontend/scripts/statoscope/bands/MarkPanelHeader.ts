@@ -18,7 +18,7 @@ module statoscope.bands {
 
             this._settingsButton = document.createElement("button");
             this._settingsButton.classList.add("settings");
-            this._settingsButton.title = common.i18n.tr("Setup widgets");
+            this._settingsButton.title = common.i18n.tr("Setup page");
             this._bar.appendChild(this._settingsButton);
 
             this.element.appendChild(this._bar);

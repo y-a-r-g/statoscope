@@ -1,0 +1,121 @@
+@import "../../theme";
+
+.s-new-mark {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+  
+  & > * {
+    vertical-align: middle;
+  }
+  
+  .s-icon-button {
+    .button(@positive-color);
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin-right: -18px !important;
+    margin-top: -18px !important;;
+    right: 50%;
+    top: 50%;
+    
+    transition: right .5s;
+    
+    div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background-color: @positive-color;
+      transition: background-color .5s, transform .5s, width .5s, margin-left .5s, margin-top .5s;
+    }
+
+    div:nth-child(1) {
+      width: 20px;
+      height: 4px;
+      margin-left: -10px;
+      margin-top: -2px;
+    }
+
+    div:nth-child(2) {
+      width: 4px;
+      height: 20px;
+      margin-left: -2px;
+      margin-top: -10px;
+    }
+  }
+  
+  input, select {
+    display: inline-block;
+    height: 36px;
+    font-family: @font-family;
+    font-size: 1em;
+    margin: 0 1%;
+    padding: 0 8px;
+    border: 1px solid fade(@text-color, 20%);
+    border-radius: 3px;
+    color: @text-color;
+    box-sizing: border-box;
+    width: 0;
+    opacity: 0;
+    transition: width .5s, opacity .5s;
+  }
+
+  input {
+    margin-right: 0;
+  }
+
+  &.extended {
+    .s-icon-button {
+      position: absolute;
+      right: 18px;
+      
+      div {
+        transform: rotate(135deg);
+      }
+            
+      &.invalid {
+        .button(@negative-color);
+        div {
+          background-color: @negative-color;
+        }
+      }
+      &:not(.invalid) {
+        div {
+          left: 45%;
+          top: 53%;
+          transform: rotate(405deg);
+        }
+        
+        div:nth-child(1) {
+          width: 10px;
+        }
+
+        div:nth-child(2) {
+          margin-left: 3px;
+          margin-top: -11px;
+        }
+      }
+    }
+
+    input {
+      width: 59%;
+      opacity: 1;
+    }
+
+    select {
+      width: 38%;
+      opacity: 1;
+    }
+  }
+}
+
+.editing {
+  .s-new-mark {
+    display: block;
+    height: 36px;
+    margin: 0 !important;
+    opacity: 1;
+    padding-right: 36px;
+  }
+}

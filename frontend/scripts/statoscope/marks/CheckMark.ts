@@ -45,5 +45,6 @@ module statoscope.marks {
         }
     }
 
-    registerMark("check", (config, info) => new CheckMark(<storage.IMarkConfig>config, info));
+    registerMark("check", "Binary (Yes/No)",
+        (config, info) => new CheckMark(<storage.IMarkConfig>config, info));
 }

@@ -18,6 +18,8 @@ module statoscope.bands {
                     statoscope.marks.createMark(markConfig, dayInfo));
                 this.addChild(mark);
             });
+
+            this.addChild(new statoscope.marks.MarkWrapper(new statoscope.marks.NewMark()));
         }
 
         get config(): storage.IMarkPanelConfig {
@@ -32,7 +34,6 @@ module statoscope.bands {
             this._editing = value;
             if (this._editing) {
                 this.element.classList.add("editing");
-
             }
             else {
                 this.element.classList.remove("editing");
