@@ -10,15 +10,17 @@
   min-width: @mark-min-width;
   max-width: @mark-max-width;
   padding: @mark-padding;
-  width: 100%;
+  width: 98%;
+  margin: 3px 1%;
   min-height: 48px;
 
   border-radius: 3px;
   border: 1px solid transparent;
   transition: border .5s;
 
-  &:hover {
+  &:not(.not-editable):hover {
     border: 1px solid fade(@text-color, 20%) !important;
+    box-shadow: 0 0 3px 0 fade(@text-color, 10) inset;
   }
 
   .s-move-handle {

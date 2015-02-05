@@ -4,7 +4,7 @@
   height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, background-color 0.5s;
   
   & > * {
     vertical-align: middle;
@@ -46,16 +46,8 @@
   }
   
   input, select {
-    display: inline-block;
-    height: 36px;
-    font-family: @font-family;
-    font-size: 1em;
+    .input();
     margin: 0 1%;
-    padding: 0 8px;
-    border: 1px solid fade(@text-color, 20%);
-    border-radius: 3px;
-    color: @text-color;
-    box-sizing: border-box;
     width: 0;
     opacity: 0;
     transition: width .5s, opacity .5s;
@@ -68,7 +60,7 @@
   &.extended {
     .s-icon-button {
       position: absolute;
-      right: 18px;
+      right: 23px;
       
       div {
         .transform(rotate(135deg));
@@ -112,10 +104,17 @@
 
 .editing {
   .s-new-mark {
+    &.extended {
+      border: 1px solid fade(@positive-color, 50);
+      box-shadow: 0 0 3px 0 fade(@positive-color, 20) inset;
+    }
+    
     display: block;
     height: 36px;
     margin: 0 !important;
     opacity: 1;
-    padding-right: 36px;
+    padding: 5px 41px 5px 5px;
+    border-radius: 3px;
+    box-sizing: content-box;
   }
 }

@@ -18,6 +18,9 @@ module statoscope.marks {
                 this.addChild(this._moveHandle);
                 this.addChild(this._controls);
             }
+            else {
+                this.element.classList.add("not-editable");
+            }
             
             this.addChild(this._mark);
         }

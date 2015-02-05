@@ -49,6 +49,23 @@
   background: @icon-url no-repeat center;
 }
 
+.input() {
+  display: inline-block;
+  height: 36px;
+  font-family: @font-family;
+  font-size: 1em;
+  padding: 0 8px;
+  border: 1px solid fade(@text-color, 20%);
+  border-radius: 3px;
+  color: @text-color;
+  box-sizing: border-box;
+  
+  &:focus {
+    border: 1px solid @brand-color;
+    outline: none;
+  }
+}
+
 .transform(...) {
   -webkit-transform: @arguments;
   -moz-transform: @arguments;
