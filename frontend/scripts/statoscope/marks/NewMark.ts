@@ -11,8 +11,8 @@ module statoscope.marks {
         private _title: HTMLInputElement;
         private _type: HTMLSelectElement;
 
-        constructor() {
-            super(null, null);
+        constructor(dayInfo: utils.IDayInfo) {
+            super(null, dayInfo);
 
             this._addButton = new view.controls.IconButton();
             this.addChild(this._addButton);
@@ -22,15 +22,23 @@ module statoscope.marks {
             this._addButton.element.title = common.i18n.tr("Add item");
             
             this._addButton.onClick.addHandler(() => {
-                if (this.element.classList.contains("extended")) {
-                    this.element.classList.remove("extended");
+                if (this.extended) {
+                    this.extended = false;
                     
-                    if (!this._addButton.element.classList.contains("invalid")) {
-                        //TODO: add property
+                    if (!this.invalid) {
+                        var markConfig = {
+                            id: moment().format('x'), //TODO: create better id
+                            type: this._type.value,
+                            title: this._title.value
+                        };
+                        
+                        dayInfo.markPanelConfig.marks.push(markConfig);
+                        statoscope.storage.instance().saveMarkPanelConfig(dayInfo.markPanelConfig);
+                        dayInfo.addMark(markConfig, dayInfo);
                     }
                 }
                 else {
-                    this.element.classList.add("extended");
+                    this.extended = true;
                 }
                 this._updateButton();
             });
@@ -57,16 +65,37 @@ module statoscope.marks {
         }
         
         private _updateButton(): void {
-            if (!this._title.value) {
-                this._addButton.element.classList.add("invalid");
-            }
-            else {
-                this._addButton.element.classList.remove("invalid");
-            }
+            this.invalid = !this._title.value;
         }
 
         get editable(): boolean {
             return false;
+        }
+        
+        private get extended(): boolean {
+            return this.parent.element.classList.contains("extended");
+        }
+        
+        private set extended(value:boolean) {
+            if (value) {
+                this.parent.element.classList.add("extended");
+            }
+            else {
+                this.parent.element.classList.remove("extended");
+            }            
+        }
+        
+        private get invalid(): boolean {
+            return this.parent.element.classList.contains("invalid");
+        }
+
+        private set invalid(value:boolean) {
+            if (value) {
+                this.parent.element.classList.add("invalid");
+            }
+            else {
+                this.parent.element.classList.remove("invalid");
+            }
         }
     }
 }

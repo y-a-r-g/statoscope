@@ -5,11 +5,11 @@
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.5s, background-color 0.5s;
-  
+
   & > * {
     vertical-align: middle;
   }
-  
+
   .s-icon-button {
     .button(@positive-color);
     position: absolute;
@@ -19,9 +19,9 @@
     margin-top: -18px !important;;
     right: 50%;
     top: 50%;
-    
+
     transition: right .5s;
-    
+
     div {
       position: absolute;
       left: 50%;
@@ -44,7 +44,7 @@
       margin-top: -10px;
     }
   }
-  
+
   input, select {
     .input();
     margin: 0 1%;
@@ -56,37 +56,16 @@
   input {
     margin-right: 0;
   }
+}
 
-  &.extended {
+&.extended {
+  .s-new-mark {
     .s-icon-button {
       position: absolute;
       right: 23px;
-      
+
       div {
         .transform(rotate(135deg));
-      }
-            
-      &.invalid {
-        .button(@negative-color);
-        div {
-          background-color: @negative-color;
-        }
-      }
-      &:not(.invalid) {
-        div {
-          left: 45%;
-          top: 53%;
-          .transform(rotate(405deg));
-        }
-        
-        div:nth-child(1) {
-          width: 10px;
-        }
-
-        div:nth-child(2) {
-          margin-left: 3px;
-          margin-top: -11px;
-        }
       }
     }
 
@@ -102,13 +81,41 @@
   }
 }
 
+&.extended.invalid {
+  .s-new-mark {
+    .s-icon-button {
+      .button(@negative-color);
+      div {
+        background-color: @negative-color;
+      }
+    }
+  }
+}
+
+&.extended:not(.invalid) {
+  .s-new-mark {
+    .s-icon-button {
+      div {
+        left: 45%;
+        top: 53%;
+        .transform(rotate(405deg));
+      }
+
+      div:nth-child(1) {
+        width: 10px;
+      }
+
+      div:nth-child(2) {
+        margin-left: 3px;
+        margin-top: -11px;
+      }
+
+    }
+  }
+}
+
 .editing {
   .s-new-mark {
-    &.extended {
-      border: 1px solid fade(@positive-color, 50);
-      box-shadow: 0 0 3px 0 fade(@positive-color, 20) inset;
-    }
-    
     display: block;
     height: 36px;
     margin: 0 !important;

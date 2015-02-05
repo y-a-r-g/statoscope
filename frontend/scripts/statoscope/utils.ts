@@ -5,6 +5,7 @@ module statoscope.utils {
         date: moment.Moment;
         markPanelConfig: storage.IMarkPanelConfig;
         dayData: storage.IDayData;
+        addMark(markConfig: storage.IMarkConfig, dayInfo: utils.IDayInfo): void;
     }
 
     export function clone(object: any): any {

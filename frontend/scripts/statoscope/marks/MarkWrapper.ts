@@ -19,7 +19,7 @@ module statoscope.marks {
                 this.addChild(this._controls);
             }
             else {
-                this.element.classList.add("not-editable");
+                this.element.classList.add("new-mark-wrapper");
             }
             
             this.addChild(this._mark);

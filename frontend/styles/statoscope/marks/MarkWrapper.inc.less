@@ -18,7 +18,7 @@
   border: 1px solid transparent;
   transition: border .5s;
 
-  &:not(.not-editable):hover {
+  &:not(.new-mark-wrapper):hover {
     border: 1px solid fade(@text-color, 20%) !important;
     box-shadow: 0 0 3px 0 fade(@text-color, 10) inset;
   }
@@ -47,6 +47,17 @@
   @handle-width: 24px;
 
   .s-mark-wrapper {
+
+    &.new-mark-wrapper.extended {
+      border: 1px solid fade(@positive-color, 50);
+      box-shadow: 0 0 3px 0 fade(@positive-color, 20) inset;
+      
+      &.invalid {
+        border: 1px solid fade(@negative-color, 50);
+        box-shadow: 0 0 3px 0 fade(@negative-color, 20) inset;
+      }
+    }
+    
     .s-move-handle {
       display: block;
       left: 0;

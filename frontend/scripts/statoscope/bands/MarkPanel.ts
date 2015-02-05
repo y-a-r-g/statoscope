@@ -13,13 +13,11 @@ module statoscope.bands {
 
             this._config = config;
 
+            this.addChild(new statoscope.marks.MarkWrapper(new statoscope.marks.NewMark(dayInfo)));
+            
             this._config.marks.forEach(markConfig => {
-                var mark = new statoscope.marks.MarkWrapper(
-                    statoscope.marks.createMark(markConfig, dayInfo));
-                this.addChild(mark);
+                this.addMark(markConfig, dayInfo);
             });
-
-            this.addChild(new statoscope.marks.MarkWrapper(new statoscope.marks.NewMark()));
         }
 
         get config(): storage.IMarkPanelConfig {
@@ -38,6 +36,12 @@ module statoscope.bands {
             else {
                 this.element.classList.remove("editing");
             }
+        }
+        
+        addMark(markConfig: storage.IMarkConfig, dayInfo: utils.IDayInfo): void {
+            var mark = new statoscope.marks.MarkWrapper(
+                statoscope.marks.createMark(markConfig, dayInfo));
+           this.insertChild(mark, this.childrenCount - 1);
         }
     }
 }

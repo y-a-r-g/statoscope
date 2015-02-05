@@ -1,12 +1,7 @@
 module statoscope.storage {
 
     var DefaultMarkPanelConfig: IMarkPanelConfig = {
-        marks: [
-            {id: "1", type: "check", title: "My first check mark"},
-            {id: "2", type: "check", title: "My second check mark"},
-            {id: "3", type: "check", title: "My third check mark"},
-            {id: "4", type: "check", title: "My fourth check mark"},
-        ]
+        marks: []
     };
 
     var DefaultDayData: IDayData = { marks: [] };
