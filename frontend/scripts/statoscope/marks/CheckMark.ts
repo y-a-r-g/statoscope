@@ -7,23 +7,24 @@ module statoscope.marks {
     export class CheckMark extends AbstractMark {
         static sType: string = "s-check-mark";
 
-        private _checkbox: HTMLInputElement;
-        private _label: HTMLLabelElement;
+        private _toggle: HTMLDivElement;
+        private _label: HTMLDivElement;
 
         constructor(config: storage.IMarkConfig, dayInfo: utils.IDayInfo) {
-            this._checkbox = document.createElement("input");
-            this._checkbox.type = "checkbox";
-            this._checkbox.id = common.Utils.getUniqueId();
+            this._toggle = document.createElement("div");
+            this._toggle.appendChild(document.createElement("div"));
+            this._toggle.classList.add("toggle-box");
 
-            this._label = document.createElement("label");
-            this._label.setAttribute("for", this._checkbox.id);
+            this._label = document.createElement("div");
+            this._label.classList.add("label");
 
             super(config, dayInfo);
 
-            this.element.appendChild(this._checkbox);
+            this.element.appendChild(this._toggle);
             this.element.appendChild(this._label);
 
-            this.addListener(this._checkbox, "click", this._onCheckboxClick);
+            this.addListener(this._toggle, "click", this._onToggleClick);
+            this.addListener(this._label, "click", this._onToggleClick);
         }
 
         cleanup(): void {
@@ -37,11 +38,16 @@ module statoscope.marks {
 
         updateValue() {
             super.updateValue();
-            this._checkbox.checked = !!this.value;
+            if (!!this.value) {
+                this._toggle.classList.add("on");
+            }
+            else {
+                this._toggle.classList.remove("on");
+            }
         }
 
-        _onCheckboxClick() {
-            this.value = this._checkbox.checked;
+        _onToggleClick() {
+            this.value = !this._toggle.classList.contains("on");
         }
     }
 

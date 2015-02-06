@@ -3,8 +3,8 @@
 @background-color: #ffffff;
 @text-over-brand-color: #f9f3e5;
 @brand-color: #26bdd4;
-@positive-color: #26d426;
-@negative-color: #d44326;
+@positive-color: #00ba23;
+@negative-color: #ca361d;
 
 @mark-min-width: 320px;
 @mark-max-width: 600px;
@@ -63,6 +63,36 @@
   &:focus {
     border: 1px solid @brand-color;
     outline: none;
+  }
+}
+
+.toggle(@color-on: @positive-color, @color-off: fade(@text-color, 30%)) {
+  display: inline-block;
+  height: 34px;
+  width: 52px;
+  border-radius: 18px;
+  background-color: @color-off;
+  box-shadow: 0 0 3px 0 darken(@color-off, 10%) inset;
+  transition: background-color .5s linear .2s, box-shadow .5s linear .2s;
+  cursor: pointer;
+  
+  & > div {
+    width: 30px;
+    height: 30px;
+    border-radius: 16px;
+    background-color: @background-color;
+    margin: 2px;
+    transition: margin-left .5s;
+    box-shadow: 0 1px 2px 0 fade(@text-color, 50%);
+  }
+  
+  &.on {
+    background-color: @color-on;
+    box-shadow: 0 0 3px 0 darken(@color-on, 10%) inset;
+    
+    & > div {
+      margin-left: 20px;
+    }
   }
 }
 
