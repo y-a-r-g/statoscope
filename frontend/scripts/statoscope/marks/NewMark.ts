@@ -79,6 +79,7 @@ module statoscope.marks {
         private set extended(value:boolean) {
             if (value) {
                 this.parent.element.classList.add("extended");
+                this._title.focus();
             }
             else {
                 this.parent.element.classList.remove("extended");

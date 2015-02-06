@@ -13,7 +13,7 @@
 @max-stretch-width: @mark-max-width-x2;
 
 .button(@color: @brand-color) {
-  border: none;
+  border: 1px solid transparent;
   padding: 0;
   margin: 0;
   background: none;
@@ -36,7 +36,8 @@
   }
 
   &:focus {
-    outline: 0;
+    border: 1px solid @brand-color;
+    outline: none;
   }
 
   &:disabled {

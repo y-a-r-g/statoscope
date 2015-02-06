@@ -18,6 +18,10 @@ module statoscope.bands {
             this._config.marks.forEach(markConfig => {
                 this.addMark(markConfig, dayInfo);
             });
+            
+            if (this._config.marks.length === 0) {
+                this.editing = true;
+            }
         }
 
         get config(): storage.IMarkPanelConfig {
