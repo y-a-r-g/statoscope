@@ -2,9 +2,9 @@
   "name": "statoscope-dev",
   "version": "0.0.1",
   "description": "Statoscope development server",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "postinstall": "./node_modules/grunt-cli/bin/grunt --frontendPath=./frontend"
+    "postinstall": "./node_modules/grunt-cli/bin/grunt build-dev"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,8 @@
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-env": "~0.4.2",
+    "grunt-express-server": "~0.4.19",
     "grunt-mkdir": "^0.1.2",
     "grunt-typescript": "~0.4.8",
     "less": "~2.2.0",
