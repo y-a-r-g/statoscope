@@ -7,7 +7,7 @@ module statoscope.pages {
         static sType = "s-day-page";
 
         private _date: moment.Moment;
-        private _markPanelConfig: storage.IMarkPanelConfig;
+        private _dayConfig: storage.IDayConfig;
         private _dayData: storage.IDayData;
 
         private _root: view.Container;
@@ -30,17 +30,17 @@ module statoscope.pages {
 
             this.addChild(this._root);
 
-            thread.synchronized((markPanelConfig, dayData) => {
-                    //TODO check error (markPanelConfig[0], dayData[0])
-                    this._markPanelConfig = markPanelConfig[1];
+            thread.synchronized((dayConfig, dayData) => {
+                    //TODO check error (dayConfig[0], dayData[0])
+                    this._dayConfig = dayConfig[1];
                     this._dayData = dayData[1];
-                    this._markPanel = new statoscope.bands.MarkPanel(this._markPanelConfig, this);
+                    this._markPanel = new statoscope.bands.MarkPanel(this._dayConfig, this);
                     this._markPanelHeader = new statoscope.bands.MarkPanelHeader(this._markPanel);
 
                     this._root.addChild(this._markPanelHeader);
                     this._root.addChild(this._markPanel);
                 },
-                callback => storage.instance().loadMarkPanelConfig(callback),
+                callback => storage.instance().loadDayConfig(callback),
                 callback => storage.instance().loadDayData(this.date, callback));
         }
 
@@ -56,8 +56,8 @@ module statoscope.pages {
             return this._date;
         }
 
-        get markPanelConfig(): storage.IMarkPanelConfig {
-            return this._markPanelConfig;
+        get dayConfig(): storage.IDayConfig {
+            return this._dayConfig;
         }
 
         get dayData(): storage.IDayData {

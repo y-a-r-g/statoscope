@@ -32,8 +32,8 @@ module statoscope.marks {
                             title: this._title.value
                         };
                         
-                        dayInfo.markPanelConfig.marks.push(markConfig);
-                        statoscope.storage.instance().saveMarkPanelConfig(dayInfo.markPanelConfig);
+                        dayInfo.dayConfig.marks.push(markConfig);
+                        statoscope.storage.instance().saveDayConfig(dayInfo.dayConfig);
                         dayInfo.addMark(markConfig, dayInfo);
                     }
                 }

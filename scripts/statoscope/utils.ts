@@ -3,7 +3,7 @@ module statoscope.utils {
 
     export interface IDayInfo {
         date: moment.Moment;
-        markPanelConfig: storage.IMarkPanelConfig;
+        dayConfig: storage.IDayConfig;
         dayData: storage.IDayData;
         addMark(markConfig: storage.IMarkConfig, dayInfo: utils.IDayInfo): void;
     }

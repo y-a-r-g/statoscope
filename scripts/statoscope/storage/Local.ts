@@ -1,34 +1,41 @@
 module statoscope.storage {
 
-    var DefaultMarkPanelConfig: IMarkPanelConfig = {
+    var DefaultDayConfig: IDayConfig = {
         marks: []
+    };
+    
+    var DefaultDashboardConfig: IDashboardConfig = {
+        charts: [],
+        from: null,
+        length: moment.duration(1, "months"),
+        frequency: "days"
     };
 
     var DefaultDayData: IDayData = { marks: [] };
 
     export class Local implements IStorage {
-        private MarkPanelConfig = "mark-panel-config";
+        private DayConfig = "day-config";
+        private DashboardConfig = "dashboard-config";
         private DayData = "day-data-";
 
         constructor() {
 
         }
 
-        loadMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void {
+        loadDayConfig(callback: DayConfigCallback, context?: any): void {
             statoscope.bands.Toolbar.indicator.show();
 
-            var config = JSON.parse(localStorage.getItem(this.MarkPanelConfig))
-                || utils.clone(DefaultMarkPanelConfig);
+            var config = JSON.parse(localStorage.getItem(this.DayConfig))
+                || utils.clone(DefaultDayConfig);
             callback.call(context, null, config);
 
             statoscope.bands.Toolbar.indicator.hide();
         }
 
-        saveMarkPanelConfig(config: IMarkPanelConfig, callback?: Callback, context?: any): void {
+        saveDayConfig(config: IDayConfig, callback?: Callback, context?: any): void {
             statoscope.bands.Toolbar.indicator.show();
 
-            localStorage.setItem(this.MarkPanelConfig,
-                JSON.stringify(config));
+            localStorage.setItem(this.DayConfig, JSON.stringify(config));
 
             if (callback) {
                 callback.call(context);
@@ -58,6 +65,33 @@ module statoscope.storage {
             }
 
             statoscope.bands.Toolbar.indicator.hide();
+        }
+
+        loadDashboardConfig(callback: ChartPanelConfigCallback, context: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
+            var config = JSON.parse(localStorage.getItem(this.DashboardConfig))
+                || utils.clone(DefaultDashboardConfig);
+            callback.call(context, null, config);
+
+            statoscope.bands.Toolbar.indicator.hide();
+        }
+
+        saveDashboardConfig(config: IDashboardConfig, callback: Callback, context: any): void {
+            statoscope.bands.Toolbar.indicator.show();
+
+            localStorage.setItem(this.DashboardConfig, JSON.stringify(config));
+
+            if (callback) {
+                callback.call(context);
+            }
+
+            statoscope.bands.Toolbar.indicator.hide();
+        }
+
+        getAxisData(descriptor: IAxisDataDescriptor, 
+                    callback: AxisDataCallback, context: any): void {
+            //TODO: implement me
         }
     }
 }

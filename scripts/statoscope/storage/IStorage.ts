@@ -11,12 +11,31 @@ module statoscope.storage {
         title: string;
     }
 
-    export interface IMarkPanelConfig {
+    export interface IDayConfig {
         marks: IMarkConfig[];
     }
 
-    export interface MarkPanelConfigCallback {
-        (err: Error, config: IMarkPanelConfig): void;
+    export interface DayConfigCallback {
+        (err: Error, config: IDayConfig): void;
+    }
+    
+    export interface IChartConfig {
+        id: string;
+        type: string;
+        title: string;
+        axes: string[];
+        options: any;
+    }
+    
+    export interface IDashboardConfig {
+        charts: IChartConfig[];
+        from: moment.Moment;
+        length: moment.Duration;
+        frequency: string;
+    }
+    
+    export interface ChartPanelConfigCallback{
+        (err: Error, config: IDayConfig): void;
     }
 
     export interface IMarkData {
@@ -31,12 +50,27 @@ module statoscope.storage {
     export interface DayDataCallback {
         (err: Error, data: IDayData): void;
     }
+    
+    export interface IAxisDataDescriptor {
+        from: moment.Moment;
+        to: moment.Moment;
+        frequency: string;
+        sourceId: string;
+    }
+    
+    export interface AxisDataCallback {
+        (err: Error, data: any[]): void;
+    }
 
     export interface IStorage {
-        loadMarkPanelConfig(callback: MarkPanelConfigCallback, context?: any): void;
-        saveMarkPanelConfig(config: IMarkPanelConfig, callback?: Callback, context?: any): void;
+        loadDayConfig(callback: DayConfigCallback, context?: any): void;
+        saveDayConfig(config: IDayConfig, callback?: Callback, context?: any): void;
         loadDayData(date: moment.Moment, callback: DayDataCallback, context?: any): void;
         saveDayData(date: moment.Moment, data: IDayData, callback?: Callback, context?: any): void;
+        loadDashboardConfig(callback: ChartPanelConfigCallback, context?: any): void;
+        saveDashboardConfig(config: IDashboardConfig, callback?: Callback, context?: any): void;
+        getAxisData(descriptor: IAxisDataDescriptor, 
+                    callback: AxisDataCallback, context?: any):void;
     }
 
     var _instance: IStorage;

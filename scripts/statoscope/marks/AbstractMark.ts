@@ -56,7 +56,7 @@ module statoscope.marks {
             this._config.title = value;
             this.updateTitle();
 
-            statoscope.storage.instance().saveMarkPanelConfig(this._dayInfo.markPanelConfig);
+            statoscope.storage.instance().saveDayConfig(this._dayInfo.dayConfig);
         }
 
         get value(): any {

@@ -5,10 +5,10 @@ module statoscope.bands {
     export class MarkPanel extends view.Container {
         static sType = "s-mark-panel";
 
-        private _config: storage.IMarkPanelConfig;
+        private _config: storage.IDayConfig;
         private _editing: boolean;
 
-        constructor(config: storage.IMarkPanelConfig, dayInfo: utils.IDayInfo) {
+        constructor(config: storage.IDayConfig, dayInfo: utils.IDayInfo) {
             super();
 
             this._config = config;
@@ -24,7 +24,7 @@ module statoscope.bands {
             }
         }
 
-        get config(): storage.IMarkPanelConfig {
+        get config(): storage.IDayConfig {
             return this._config;
         }
 
