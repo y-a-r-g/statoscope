@@ -77,11 +77,11 @@ module statoscope.bands {
                     "<div>" + date.format(format) + "</div>";
 
                 if (date.isSame(this.date, "day")) {
-                    this._days[i].classList.add("pressed");
+                    this._days[i].classList.add("pinned");
                     this._days[i].disabled = true;
                 }
                 else {
-                    this._days[i].classList.remove("pressed");
+                    this._days[i].classList.remove("pinned");
                     this._days[i].disabled = false;
                 }
 

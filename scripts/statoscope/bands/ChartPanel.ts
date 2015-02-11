@@ -12,8 +12,6 @@ module statoscope.bands {
             super();
 
             this._config = config;
-
-            /*this.addChild(new statoscope.charts.ChartWrapper(new statoscope.charts.NewChart(markPanelConfig)));*/
             
             this._config.charts.forEach(chartConfig => {
                 this.addChart(chartConfig, dayConfig);

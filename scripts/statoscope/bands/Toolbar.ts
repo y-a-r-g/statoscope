@@ -34,8 +34,8 @@ module statoscope.bands {
             ].forEach(i => {
                     var btn = new view.controls.TextButton(common.i18n.tr(i.label));
                     if (page instanceof i.ctor) {
-                        btn.element.classList.add("pressed");
-                        btn.element.disabled = true;
+                        btn.pinned = true;
+                        btn.disabled = true;
                     }
                     btn.onClick.addHandler(() => {
                         common.Router.navigate({page: i.page});

@@ -29,7 +29,7 @@
     box-shadow: inset 0 0 20px 3px darken(fadeout(@color, 50%), 8%);
   }
 
-  &.pressed {
+  &.pinned {
     color: @text-over-brand-color;
     background-color: @color;
     box-shadow: inset 0 0 20px 3px darken(@color, 8%);
@@ -45,7 +45,7 @@
   }
 }
 
-.button-with-icon(@icon-url) {
+.button-with-icon(@icon-url: none) {
   .button();
   background: @icon-url no-repeat center;
 }
