@@ -1,6 +1,7 @@
 @import "../../theme";
 
 @mark-padding: 5px;
+@button-size: 36px;
 
 .s-mark-wrapper {
   display: inline-block;
@@ -16,90 +17,111 @@
 
   border-radius: 3px;
   border: 1px solid transparent;
-  transition: border .5s;
+  transition: border .5s;  
 
-  &:not(.new-mark-wrapper):hover {
+  &:hover,
+  &.settings {
     border: 1px solid fade(@text-color, 20%) !important;
     box-shadow: 0 0 3px 0 fade(@text-color, 10) inset;
   }
 
   .s-move-handle {
     position: absolute;
-    width: 0;
-    transition: width 0.5s;
     opacity: .2;
+    left: 0;
+    top: @mark-padding;
+    width: 0;
+    bottom: @mark-padding;
+    transition: width 0.5s, opacity .5s;
   }
 
-  .s-mark-controls {
+  .n-setup {
     position: absolute;
     display: none;
-    width: 0;
-    right: 0;
+    right: @mark-padding;
+    width: @button-size;
+    height: @button-size;
+    top: 50%;
+    opacity: .2;
+    margin: -0.5 * @button-size 2px 0 2px;
   }
 
-  .s-abstract-mark {
+  .n-editor {
     position: relative;
-    transition: margin-left .5s, margin-right .5s;
+    display: none;
+    background-color: white;
+    margin-right: @button-size + 4px;
+    
+    & > * {
+      vertical-align: middle;
+    }
+
+    .s-abstract-button {
+      .button-with-icon();
+      width: @button-size;
+      height: @button-size;
+      margin: 0 2px;
+    }
+    
+    input {
+      margin-right: @mark-padding;
+      width: 50%;
+    }
+    
+    select {
+      margin-right: @mark-padding;
+      width: ~"calc(50% - 94px)";
+    }
   }
 }
 
-.editing {
+.s-mark-panel.editing {
   @handle-width: 24px;
 
   .s-mark-wrapper {
-
-    &.new-mark-wrapper.extended {
-      border: 1px solid fade(@positive-color, 50);
-      box-shadow: 0 0 3px 0 fade(@positive-color, 20) inset;
-      
-      &.invalid {
-        border: 1px solid fade(@negative-color, 50);
-        box-shadow: 0 0 3px 0 fade(@negative-color, 20) inset;
-      }
-    }
+    border: 1px solid fade(@text-color, 5%);
     
     .s-move-handle {
       display: block;
-      left: 0;
-      top: @mark-padding;
       width: @handle-width;
-      bottom: @mark-padding;
-      transition: opacity .5s;
     }
-
-    @control-button-size: 36px;
-
+    
     .s-abstract-mark {
       margin-left: @handle-width;
-      margin-right: @control-button-size * 3 + @mark-padding;
+      margin-right: @button-size + @mark-padding + 4px;
     }
 
-    .s-mark-controls {
-      display: block;
-      box-sizing: content-box;
-      top: 50%;
-      margin-top: -0.5 * @control-button-size;
-      height: @control-button-size;
-      padding: 0 @mark-padding;
-      width: @control-button-size * 3;
-      opacity: 0;
-      transition: opacity .5s;
-      text-align: right;
-
-      .s-icon-button {
-        width: @control-button-size;
-        height: @control-button-size;
-      }
-    }
-
-    &:hover {
-
+    &:hover,
+    &.settings {
       .s-move-handle {
         opacity: .8;
       }
 
-      .s-mark-controls {
+      .n-setup {
         opacity: 1;
+      }
+    }
+    
+    &.settings {
+      .s-abstract-mark {
+        display: none;
+      }
+
+      .n-editor {
+        display: block;
+        margin-left: @handle-width;
+      }
+    }
+
+    &.new {
+      .n-editor {
+        margin-right: 0;
+      }
+    }
+    
+    &:not(.new) {
+      .n-setup {
+        display: block;
       }
     }
   }

@@ -75,5 +75,13 @@ module view {
                 this._element.classList.add("n-" + this._name);
             }
         }
+        
+        get title(): string {
+            return this.element.title;
+        }
+        
+        set title(value: string) {
+            this.element.title = value;
+        }
     }
 }

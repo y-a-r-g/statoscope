@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23" height="23">
+    <desc iVinci="yes" version="4.5" gridStep="1" showGrid="yes" snapToGrid="yes" codePlatform="0"/>
+    <g id="Layer1" opacity="1">
+        <g id="Shape1">
+            <desc shapeID="1" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(0,0,0,0)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1,0,0,1,11.5,2.5)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath1" d="M11.5,2.5 Z" style="stroke:none;fill-rule:evenodd;fill:#333333;fill-opacity:0.705882;"/>
+        </g>
+        <g id="Shape2">
+            <desc shapeID="2" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12" basicInfo-polygonSides="6" basicInfo-starPoints="5" bounding="rect(-11,-11,22,22)" text="" font-familyName="Helvetica" font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0" markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2" shadowBlur="4" shadowOpacity="160" blurEnabled="0" blurRadius="4" transform="matrix(1,0,0,1,11.5,11.5)" pers-center="0,0" pers-size="0,0" pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+            <path id="shapePath2" d="M10.5,0.5 C10.5,0.5 12.5,0.5 12.5,0.5 C12.5,0.5 13.5,9.5 13.5,9.5 C13.5,9.5 22.5,10.5 22.5,10.5 C22.5,10.5 22.5,12.5 22.5,12.5 C22.5,12.5 13.5,13.5 13.5,13.5 C13.5,13.5 12.5,22.5 12.5,22.5 C12.5,22.5 10.5,22.5 10.5,22.5 C10.5,22.5 9.5,13.5 9.5,13.5 C9.5,13.5 0.5,12.5 0.5,12.5 C0.5,12.5 0.5,10.5 0.5,10.5 C0.5,10.5 9.5,9.5 9.5,9.5 C9.5,9.5 10.5,0.5 10.5,0.5 Z" style="stroke:none;fill-rule:evenodd;fill:#333333;fill-opacity:0.705882;"/>
+        </g>
+    </g>
+</svg>

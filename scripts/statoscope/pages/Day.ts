@@ -34,7 +34,7 @@ module statoscope.pages {
                     //TODO check error (dayConfig[0], dayData[0])
                     this._dayConfig = dayConfig[1];
                     this._dayData = dayData[1];
-                    this._markPanel = new statoscope.bands.MarkPanel(this._dayConfig, this);
+                    this._markPanel = new statoscope.bands.MarkPanel(this);
                     this._markPanelHeader = new statoscope.bands.MarkPanelHeader(this._markPanel);
 
                     this._root.addChild(this._markPanelHeader);

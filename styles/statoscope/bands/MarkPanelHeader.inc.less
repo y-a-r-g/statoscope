@@ -12,11 +12,23 @@
     max-width: @max-stretch-width;
     text-align: right;
 
-    .n-settings {
-      .button-with-icon();
+    .s-icon-button {
       width: 60px;
       height: 36px;
       display: inline-block;
+      margin: 5px 2px;
+    }
+  }
+  
+  &:not(.editing) {
+    .n-add {
+      display: none;
+    }
+  }
+  
+  &.empty {
+    .n-add {
+      background-color: @positive-color;
     }
   }
 }

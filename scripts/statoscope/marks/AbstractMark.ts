@@ -1,7 +1,6 @@
 ///<reference path="factory.ts" />
 ///<reference path="../../view/Control.ts" />
 
-
 module statoscope.marks {
     "use strict";
 
@@ -18,22 +17,19 @@ module statoscope.marks {
             this._config = config;
             this._dayInfo = dayInfo;
 
-            if (this._config && this._dayInfo) {
-                this._dayInfo.dayData.marks.some(markData => {
-                    if (markData.id === this.config.id) {
-                        this._markData = markData;
-                        return true;
-                    }
-                });
-
-                if (!this._markData) {
-                    this._markData = {id: this._config.id, value: null};
-                    this._dayInfo.dayData.marks.push(this._markData);
+            this._dayInfo.dayData.marks.some(markData => {
+                if (markData.id === this.config.id) {
+                    this._markData = markData;
+                    return true;
                 }
+            });
+
+            if (!this._markData) {
+                this._markData = {id: this._config.id, value: null};
+                this._dayInfo.dayData.marks.push(this._markData);
             }
 
-            this.updateTitle();
-            this.updateValue();
+            this.update();
         }
 
         cleanup(): void {
@@ -48,38 +44,19 @@ module statoscope.marks {
             return this._dayInfo;
         }
 
-        get title(): string {
-            return this._config.title;
-        }
-
-        set title(value: string) {
-            this._config.title = value;
-            this.updateTitle();
-
-            statoscope.storage.instance().saveDayConfig(this._dayInfo.dayConfig);
-        }
-
         get value(): any {
             return this._markData.value;
         }
 
         set value(value: any) {
             this._markData.value = value;
-            this.updateValue();
+            this.update();
 
             statoscope.storage.instance().saveDayData(this._dayInfo.date, this._dayInfo.dayData);
         }
 
-        updateTitle() {
+        update() {
 
-        }
-
-        updateValue() {
-
-        }
-        
-        get editable(): boolean {
-            return true;
         }
     }
 }

@@ -31,13 +31,9 @@ module statoscope.marks {
             super.cleanup();
         }
 
-        updateTitle() {
-            super.updateTitle();
-            this._label.innerHTML = this.title;
-        }
-
-        updateValue() {
-            super.updateValue();
+        update() {
+            super.update();
+            this._label.innerHTML = this.config.title;
             if (!!this.value) {
                 this._toggle.classList.add("on");
             }

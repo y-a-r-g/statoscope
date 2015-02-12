@@ -16,7 +16,7 @@ module view {
 
         cleanup(): void {
             super.cleanup();
-            this.removeAllChildren();
+            this._children.forEach(child => child.cleanup());
             if (this.layout) {
                 this.layout.cleanup();
             }
@@ -54,8 +54,8 @@ module view {
             }
         }
 
-        addChild(control: Control): void {
-            this.insertChild(control, this.childrenCount);
+        addChild(...controls: Control[]): void {
+            controls.forEach(control => this.insertChild(control, this.childrenCount));
         }
 
         insertChild(control: Control, index: number): void {
@@ -77,12 +77,11 @@ module view {
             var deleted = this._children.splice(index, 1)[0];
             this.container.removeChild(deleted.element);
             deleted.parent = null;
-            deleted.cleanup();
             this.relayout();
         }
 
         removeAllChildren(): void {
-            this._children.forEach(child => child.cleanup());
+            this._children.forEach(child => child.detach());
         }
 
         get childrenCount(): number {
@@ -98,7 +97,7 @@ module view {
         }
 
         get children(): Control[] {
-            return this._children.slice(0);
+            return this._children;
         }
     }
 }
