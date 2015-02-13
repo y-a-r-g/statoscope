@@ -24,7 +24,7 @@ module statoscope.storage {
         type: string;
         title: string;
         axes: string[];
-        options: any;
+        options?: any;
     }
     
     export interface IDashboardConfig {

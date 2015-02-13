@@ -28,9 +28,5 @@ module statoscope.charts {
         get dayConfig(): storage.IDayConfig {
             return this._dayConfig;
         }
-
-        get editable(): boolean {
-            return true;
-        }
     }
 }

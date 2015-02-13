@@ -6,15 +6,17 @@ module statoscope.bands {
         static sType = "s-chart-panel";
 
         private _config: storage.IDashboardConfig;
+        private _dayConfig: storage.IDayConfig;
         private _editing: boolean;
 
         constructor(config: storage.IDashboardConfig, dayConfig: storage.IDayConfig) {
             super();
 
             this._config = config;
+            this._dayConfig = dayConfig;
             
             this._config.charts.forEach(chartConfig => {
-                this.addChart(chartConfig, dayConfig);
+                this.addChart(chartConfig);
             });
             
             if (this._config.charts.length === 0) {
@@ -24,6 +26,10 @@ module statoscope.bands {
 
         get config(): storage.IDashboardConfig {
             return this._config;
+        }
+        
+        get dayConfig(): storage.IDayConfig {
+            return this._dayConfig;
         }
 
         get editing(): boolean {
@@ -40,10 +46,14 @@ module statoscope.bands {
             }
         }
         
-        addChart(chartConfig: storage.IChartConfig, dayConfig: storage.IDayConfig): void {
+        addChart(chartConfig: storage.IChartConfig, asNew?: boolean): void {
             var chart = new statoscope.charts.ChartWrapper(
-                statoscope.charts.createChart(chartConfig, dayConfig));
-           this.insertChild(chart, this.childrenCount - 1);
+                statoscope.charts.createChart(chartConfig, this.dayConfig));
+            this.addChild(chart);
+            if (asNew) {
+                chart.settings = true;
+                chart.element.classList.add("new");
+            }
         }
     }
 }

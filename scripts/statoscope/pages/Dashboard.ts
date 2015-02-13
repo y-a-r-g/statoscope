@@ -11,8 +11,9 @@ module statoscope.pages {
 
         private _root: view.Container;
         private _toolbar: statoscope.bands.Toolbar;
+        private _chartPanelHeader: statoscope.bands.ChartPanelHeader;
         private _chartPanel: statoscope.bands.ChartPanel;
-
+        
         constructor(options: any) {
             super(options);
 
@@ -29,7 +30,11 @@ module statoscope.pages {
                     this._dashboardConfig = dashboardConfig[1];
                     this._chartPanel = new statoscope.bands.ChartPanel(
                         this._dashboardConfig, this._dayConfig);
+                    
+                    this._chartPanelHeader = new statoscope.bands.ChartPanelHeader(
+                        this._chartPanel);
 
+                    this._root.addChild(this._chartPanelHeader);
                     this._root.addChild(this._chartPanel);
                 },
                     callback => storage.instance().loadDayConfig(callback),

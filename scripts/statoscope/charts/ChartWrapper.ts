@@ -6,18 +6,14 @@ module statoscope.charts {
 
         private _moveHandle: statoscope.controls.MoveHandle;
         private _chart: AbstractChart;
+        private _editor: view.Container;
 
         constructor(chart: AbstractChart) {
             super();
             this._chart = chart;
 
-            if (this._chart.editable) {
-                this._moveHandle = new statoscope.controls.MoveHandle();
-                this.addChild(this._moveHandle);
-            }
-            else {
-                this.element.classList.add("new-chart-wrapper");
-            }
+            this._moveHandle = new statoscope.controls.MoveHandle();
+            this.addChild(this._moveHandle);
 
             this.addChild(this._chart);
         }
@@ -26,8 +22,16 @@ module statoscope.charts {
             super.cleanup();
         }
 
-        get mark(): AbstractChart {
+        get chart(): AbstractChart {
             return this._chart;
+        }
+
+        get settings(): boolean {
+            return !!this._editor;
+        }
+
+        set settings(value: boolean) {
+            
         }
     }
 }
