@@ -47,8 +47,7 @@ module statoscope.bands {
         }
         
         addChart(chartConfig: storage.IChartConfig, asNew?: boolean): void {
-            var chart = new statoscope.charts.ChartWrapper(
-                statoscope.charts.createChart(chartConfig, this.dayConfig));
+            var chart = new statoscope.charts.ChartWrapper(chartConfig, this.dayConfig);
             this.addChild(chart);
             if (asNew) {
                 chart.settings = true;

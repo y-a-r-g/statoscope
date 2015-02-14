@@ -5,7 +5,7 @@ module statoscope.charts {
         chartNames = {};
 
     export interface ChartBuilder {
-        (config: storage.IMarkConfig, dayConfig: storage.IDayConfig): AbstractChart;
+        (config: storage.IChartConfig, dayConfig: storage.IDayConfig): AbstractChart;
     }
 
     export function createChart(config: storage.IChartConfig, 

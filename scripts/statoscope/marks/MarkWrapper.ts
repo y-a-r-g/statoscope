@@ -14,7 +14,7 @@ module statoscope.marks {
             this._createMark(markConfig, dayInfo);
 
             this._moveHandle = new statoscope.controls.MoveHandle();
-            this._setupButton = new view.controls.IconButton("images/marks/setup.svg");
+            this._setupButton = new view.controls.IconButton("images/controls/setup.svg");
             this._setupButton.name = "setup";
             this._setupButton.onClick.addHandler(() => 
                 this.settings = !this.settings);
@@ -52,11 +52,11 @@ module statoscope.marks {
                     var title = new view.controls.Input(
                         view.controls.InputType.text, this.mark.config.title);
                     var type = new view.controls.Select(
-                        getMarkTypes().map(type => { return {
+                        getMarkTypes().map(type => ({
                             value: type,
                             label: getMarkName(type)
-                        };}), this.mark.config.type);
-                    var save = new view.controls.IconButton("images/marks/save.svg");
+                        })), this.mark.config.type);
+                    var save = new view.controls.IconButton("images/controls/save.svg");
                     save.title = common.i18n.tr("Save");
                     save.onClick.addHandler(() => {
                         this.mark.config.title = title.value;
@@ -72,7 +72,7 @@ module statoscope.marks {
                         }
                         this.settings = false;
                     });
-                    var remove = new view.controls.IconButton("images/marks/remove.svg");
+                    var remove = new view.controls.IconButton("images/controls/remove.svg");
                     remove.title = common.i18n.tr("Remove");
                     remove.onClick.addHandler(() => {
                         var result = this.element.classList.contains("new") ||
