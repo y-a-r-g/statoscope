@@ -5,7 +5,7 @@ module statoscope.marks {
     "use strict";
 
     export class NumberMark extends AbstractMark {
-        static sType: string = "s-number-mark";
+        static sType = "s-number-mark";
 
         private _textBox: HTMLInputElement;
         private _label: HTMLDivElement;

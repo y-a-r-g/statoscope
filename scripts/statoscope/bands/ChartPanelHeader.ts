@@ -53,7 +53,7 @@ module statoscope.bands {
                 options: {}
             };
             this._chartPanel.config.charts.push(config);
-            this._chartPanel.addChart(config, true);
+            this._chartPanel.addItem(config, true);
         }
 
         get editing(): boolean {

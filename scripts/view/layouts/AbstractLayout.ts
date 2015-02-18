@@ -15,7 +15,7 @@ module view.layouts {
         }
 
         refresh(): void {
-            throw new Error("Abstract method call");
+            throw new TypeError("Not implemented");
         }
 
         get container(): view.Container {

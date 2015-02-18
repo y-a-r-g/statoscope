@@ -51,7 +51,7 @@ module statoscope.bands {
                 title: ""
             };
             this._markPanel.dayInfo.dayConfig.marks.push(config);
-            this._markPanel.addMark(config, this._markPanel.dayInfo, true);
+            this._markPanel.addItem(config, true);
         }
 
         get editing(): boolean {

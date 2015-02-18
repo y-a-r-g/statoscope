@@ -65,7 +65,7 @@ module statoscope.pages {
         }
 
         addMark(markConfig: storage.IMarkConfig, dayInfo: utils.IDayInfo): void {
-            this._markPanel.addMark(markConfig, dayInfo);
+            this._markPanel.addItem(markConfig);
         }
     }
 }

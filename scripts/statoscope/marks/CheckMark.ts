@@ -5,7 +5,7 @@ module statoscope.marks {
     "use strict";
 
     export class CheckMark extends AbstractMark {
-        static sType: string = "s-check-mark";
+        static sType = "s-check-mark";
 
         private _toggle: HTMLDivElement;
         private _label: HTMLDivElement;

@@ -1,127 +1,42 @@
 @import "../../theme";
 
-@mark-padding: 5px;
-@button-size: 36px;
-
 .s-mark-wrapper {
-  display: inline-block;
-  position: relative;
-  vertical-align: top;
-  text-align: left;
-  min-width: @mark-min-width;
-  max-width: @mark-max-width;
-  padding: @mark-padding;
-  width: 98%;
-  margin: 3px 1%;
-  min-height: 48px;
-
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: border .5s;  
-
-  &:hover,
-  &.settings {
-    border: 1px solid fade(@text-color, 20%) !important;
-    box-shadow: 0 0 3px 0 fade(@text-color, 10) inset;
-  }
-
-  .s-move-handle {
-    position: absolute;
-    opacity: .2;
-    left: 0;
-    top: @mark-padding;
-    width: 0;
-    bottom: @mark-padding;
-    transition: width 0.5s, opacity .5s;
-  }
-
   .n-setup {
-    position: absolute;
-    display: none;
-    right: @mark-padding;
-    width: @button-size;
-    height: @button-size;
     top: 50%;
-    opacity: .2;
-    margin: -0.5 * @button-size 2px 0 2px;
+    margin: -0.5 * @item-button-size 2px 0 2px;
   }
-
+  
   .n-editor {
-    position: relative;
-    display: none;
-    background-color: white;
-    margin-right: @button-size + 4px;
-    
+    margin-right: @item-button-size + 4px;
+
     & > * {
       vertical-align: middle;
     }
 
     .s-abstract-button {
       .button-with-icon();
-      width: @button-size;
-      height: @button-size;
+      width: @item-button-size;
+      height: @item-button-size;
       margin: 0 2px;
     }
-    
+
     input {
-      margin-right: @mark-padding;
+      margin-right: @item-padding;
       width: 50%;
     }
-    
+
     select {
-      margin-right: @mark-padding;
-      width: ~"calc(50% - 94px)";
+      margin-right: @item-padding;
+      width: ~"calc(50% - 92px)";
     }
   }
 }
 
 .s-mark-panel.editing {
-  @handle-width: 24px;
-
   .s-mark-wrapper {
-    border: 1px solid fade(@text-color, 5%);
-    
-    .s-move-handle {
-      display: block;
-      width: @handle-width;
-    }
-    
-    .s-abstract-mark {
-      margin-left: @handle-width;
-      margin-right: @button-size + @mark-padding + 4px;
-    }
-
-    &:hover,
-    &.settings {
-      .s-move-handle {
-        opacity: .8;
-      }
-
-      .n-setup {
-        opacity: 1;
-      }
-    }
-    
-    &.settings {
-      .s-abstract-mark {
-        display: none;
-      }
-
-      .n-editor {
-        display: block;
-        margin-left: @handle-width;
-      }
-    }
-
     &.new {
       .n-editor {
         margin-right: 0;
-      }
-    }
-    
-    &:not(.new) {
-      .n-setup {
-        display: block;
       }
     }
   }

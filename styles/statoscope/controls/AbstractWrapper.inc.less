@@ -1,0 +1,94 @@
+@import "../../theme";
+
+.s-abstract-wrapper {
+  position: relative;
+  min-width: @item-min-width;
+  max-width: @item-max-width;
+  padding: @item-padding;
+  width: 98%;
+  margin: 3px 1%;
+  min-height: 48px;
+
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: border .5s;
+
+  &:hover,
+  &.settings {
+    border: 1px solid fade(@text-color, 20%) !important;
+    box-shadow: 0 0 3px 0 fade(@text-color, 10) inset;
+  }
+
+  .s-move-handle {
+    position: absolute;
+    opacity: .2;
+    left: 0;
+    top: @item-padding;
+    width: 0;
+    bottom: @item-padding;
+    transition: width 0.5s, opacity .5s;
+  }
+
+  .n-setup {
+    position: absolute;
+    display: none;
+    right: @item-padding;
+    width: @item-button-size;
+    height: @item-button-size;
+    top: @item-padding;
+    opacity: .2;
+    margin: 2px;
+  }
+
+  .n-editor {
+    position: relative;
+    display: none;
+    background-color: @background-color;
+  }
+}
+
+.s-abstract-panel.editing {
+  @handle-width: 24px;
+
+  .s-abstract-wrapper {
+    border: 1px solid fade(@text-color, 5%);
+
+    .s-move-handle {
+      display: block;
+      width: @handle-width;
+    }
+
+    .s-abstract-wrapped-item {
+      margin-left: @handle-width;
+      margin-right: @item-button-size + @item-padding + 4px;
+    }
+
+    &:hover,
+    &.settings {
+      .s-move-handle {
+        opacity: .8;
+      }
+
+      .n-setup {
+        opacity: 1;
+      }
+    }
+
+    &.settings {
+      .s-abstract-wrapped-item {
+        display: none;
+      }
+
+      .n-editor {
+        display: block;
+        margin-left: @handle-width;
+      }
+    }
+
+    &:not(.new) {
+      .n-setup {
+        display: block;
+      }
+    }
+  }
+}

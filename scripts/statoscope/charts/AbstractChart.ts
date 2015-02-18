@@ -1,28 +1,21 @@
-///<reference path="factory.ts" />
-///<reference path="../../view/Control.ts" />
+///<reference path="../controls/AbstractWrappedItem.ts" />
 
 module statoscope.charts {
     "use strict";
 
-    export class AbstractChart extends view.Container {
-        static sType: string = "s-abstract-chart";
+    export class AbstractChart 
+            extends statoscope.controls.AbstractWrappedItem<storage.IChartConfig> {
+        static sType = "s-abstract-chart";
 
-        private _config: storage.IChartConfig;
         private _dayConfig: storage.IDayConfig;
 
         constructor(config: storage.IChartConfig, dayConfig: storage.IDayConfig) {
-            super();
-
-            this._config = config;
+            super(config);
             this._dayConfig = dayConfig;
         }
 
         cleanup(): void {
             super.cleanup();
-        }
-
-        get config(): storage.IMarkConfig {
-            return this._config;
         }
 
         get dayConfig(): storage.IDayConfig {

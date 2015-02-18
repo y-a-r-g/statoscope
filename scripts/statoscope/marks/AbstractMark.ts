@@ -4,17 +4,14 @@
 module statoscope.marks {
     "use strict";
 
-    export class AbstractMark extends view.Container {
-        static sType: string = "s-abstract-mark";
+    export class AbstractMark extends statoscope.controls.AbstractWrappedItem<storage.IMarkConfig> {
+        static sType = "s-abstract-mark";
 
-        private _config: storage.IMarkConfig;
         private _dayInfo: utils.IDayInfo;
         private _markData: storage.IMarkData;
 
         constructor(config: storage.IMarkConfig, dayInfo: utils.IDayInfo) {
-            super();
-
-            this._config = config;
+            super(config);
             this._dayInfo = dayInfo;
 
             this._dayInfo.dayData.marks.some(markData => {
@@ -25,7 +22,7 @@ module statoscope.marks {
             });
 
             if (!this._markData) {
-                this._markData = {id: this._config.id, value: null};
+                this._markData = {id: this.config.id, value: null};
                 this._dayInfo.dayData.marks.push(this._markData);
             }
 
@@ -34,10 +31,6 @@ module statoscope.marks {
 
         cleanup(): void {
             super.cleanup();
-        }
-
-        get config(): storage.IMarkConfig {
-            return this._config;
         }
 
         get dayInfo(): utils.IDayInfo {
