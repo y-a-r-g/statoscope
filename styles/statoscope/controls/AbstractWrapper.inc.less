@@ -35,15 +35,21 @@
     right: @item-padding;
     width: @item-button-size;
     height: @item-button-size;
-    top: @item-padding;
+    top: 0;
     opacity: .2;
-    margin: 2px;
+    transition: opacity .5s, background-color .5s;
+    margin-top: @item-padding;
   }
 
-  .n-editor {
-    position: relative;
-    display: none;
+  .s-editor-bar {
     background-color: @background-color;
+    margin-right: @item-button-size + @item-padding;
+  }
+
+  &:not(.settings) {
+    .s-editor-bar {
+      display: none;
+    }
   }
 }
 
@@ -63,6 +69,12 @@
       margin-right: @item-button-size + @item-padding + 4px;
     }
 
+    &.new {
+      .s-editor-bar {
+        margin-right: 0;
+      }
+    }
+
     &:hover,
     &.settings {
       .s-move-handle {
@@ -79,8 +91,7 @@
         display: none;
       }
 
-      .n-editor {
-        display: block;
+      .s-editor-bar {
         margin-left: @handle-width;
       }
     }

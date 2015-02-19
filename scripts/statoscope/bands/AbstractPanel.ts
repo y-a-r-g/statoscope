@@ -11,14 +11,10 @@ module statoscope.bands {
 
         constructor(dayConfig: storage.IDayConfig) {
             this._dayConfig = dayConfig;
-            
-            var layout = new view.layouts.FlexLayout();
-            super(layout);
-
-            layout.alignContent = view.layouts.FlexLayoutAlign.flexStart;
-            layout.alignItems = view.layouts.FlexLayoutAlign.flexStart;
-            layout.justify = view.layouts.FlexLayoutJustify.center;
-            layout.wrap = true;
+            super(new view.layouts.FlexLayout(null, true,
+                view.layouts.FlexLayoutJustify.center,
+                view.layouts.FlexLayoutAlign.flexStart,
+                view.layouts.FlexLayoutAlign.flexStart));
         }
 
         createWrapper(itemConfig: ItemConfig): statoscope.controls.AbstractWrapper<ItemConfig> {

@@ -54,14 +54,20 @@ module view {
             }
         }
 
-        addChild(...controls: Control[]): void {
-            controls.forEach(control => this.insertChild(control, this.childrenCount));
+        addChild(control: Control, layoutSettings?: ILayoutSettings): void {
+            this.insertChild(control, this.childrenCount, layoutSettings);
         }
 
-        insertChild(control: Control, index: number): void {
+        addChildren(controls: Control[], layoutSettings?: ILayoutSettings[]): void {
+            controls.forEach((control, index) => 
+                this.addChild(control, layoutSettings && layoutSettings[index]));
+        }
+
+        insertChild(control: Control, index: number, layoutSettings?: ILayoutSettings): void {
             this.removeChild(control);
             this._children.splice(index, 0, control);
             control.parent = this;
+            control.layoutSettings = layoutSettings;
             this.container.insertBefore(control.element, this.container.children[index]);
             this.relayout();
         }

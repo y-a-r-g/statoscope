@@ -19,7 +19,8 @@ module statoscope.controls {
             this._setupButton.name = "setup";
             this._setupButton.onClick.addHandler(() => this.settings = !this.settings);
 
-            this.addChild(this._moveHandle, this._setupButton);
+            this.addChild(this._moveHandle);
+            this.addChild(this._setupButton);
         }
 
         newItem(config: ItemConfig): AbstractWrappedItem<ItemConfig> {

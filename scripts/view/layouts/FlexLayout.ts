@@ -35,8 +35,20 @@ module view.layouts {
     export class FlexLayout extends AbstractLayout {
         static sType = "s-flex-layout";
 
-        constructor() {
+        private _direction: FlexLayoutDirection = FlexLayoutDirection.row;
+        private _wrap: boolean = false;
+        private _justify: FlexLayoutJustify = FlexLayoutJustify.flexStart;
+        private _alignItems: FlexLayoutAlign = FlexLayoutAlign.stretch;
+        private _alignContent: FlexLayoutAlign = FlexLayoutAlign.stretch;
+
+        constructor(direction?: FlexLayoutDirection, wrap?: boolean, justify?: FlexLayoutJustify,
+                    alignItems?: FlexLayoutAlign, alignContent?: FlexLayoutAlign) {
             super();
+            this.direction = direction;
+            this.wrap = wrap;
+            this.justify = justify;
+            this.alignItems = alignItems;
+            this.alignContent = alignContent;
         }
 
         refresh(): void {
@@ -51,6 +63,17 @@ module view.layouts {
                     style.alignSelf = FlexLayoutAlign[settings.align];
                 }
             });
+            this._updateStyles();
+        }
+        
+        private _updateStyles(): void {
+            if (this.container) {
+                this._setStyle("flex-direction", FlexLayoutDirection[this._direction]);
+                this._setStyle("flex-wrap", this._wrap ? "wrap" : "nowrap");
+                this._setStyle("justify-content", FlexLayoutJustify[this._justify]);
+                this._setStyle("align-items", FlexLayoutAlign[this._alignItems]);
+                this._setStyle("align-content", FlexLayoutAlign[this.alignContent]);
+            }
         }
         
         private _setStyle(style: string, value: string): void {
@@ -64,44 +87,48 @@ module view.layouts {
         }
         
         get direction(): FlexLayoutDirection {
-            return FlexLayoutDirection[this._getStyle("flex-direction")];
+            return this._direction;
         }
         
         set direction(value: FlexLayoutDirection) {
-            this._setStyle("flex-direction", FlexLayoutDirection[value]);
+            this._direction = value;
+            this._updateStyles();
         }
         
         get wrap(): boolean {
-            return this._getStyle("flex-wrap") !== "nowrap";
+            return this._wrap;
         }
         
         set wrap(value: boolean) {
-            this._setStyle("flex-wrap", value ? "wrap" : "nowrap");
+            this._wrap = value;
+            this._updateStyles();
         }
         
         get justify(): FlexLayoutJustify {
-            return FlexLayoutJustify[this._getStyle("justify-content")];
+            return this._justify;
         }
         
         set justify(value: FlexLayoutJustify) {
-            this._setStyle("justify-content", FlexLayoutJustify[value]);
+            this._justify = value;
+            this._updateStyles();
         }
         
         get alignItems(): FlexLayoutAlign {
-            return FlexLayoutAlign[this._getStyle("align-items")];
+            return this._alignItems
         }
         
         set alignItems(value:FlexLayoutAlign) {
-            this._setStyle("align-items", FlexLayoutAlign[value]);
-            
+            this._alignItems = value;
+            this._updateStyles();
         }
 
         get alignContent(): FlexLayoutAlign {
-            return FlexLayoutAlign[this._getStyle("align-content")];
+            return this._alignContent;
         }
 
         set alignContent(value:FlexLayoutAlign) {
-            this._setStyle("align-content", FlexLayoutAlign[value]);
+            this._alignContent = value;
+            this._updateStyles();
         }
     }
 }

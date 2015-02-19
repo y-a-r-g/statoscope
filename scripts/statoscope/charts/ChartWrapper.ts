@@ -16,7 +16,7 @@ module statoscope.charts {
         }
 
         newItem(config: storage.IChartConfig): AbstractChart {
-            return null;
+            return createChart(config, this._dayConfig);
         }
 
         newEditor(): view.Control {

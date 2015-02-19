@@ -17,21 +17,16 @@ module statoscope.marks {
         }
 
         newEditor(): view.Control {
-            var editor = new view.Container();
-
-            var title = new view.controls.Input(
-                view.controls.InputType.text, this.item.config.title);
-            var type = new view.controls.Select(
+            var editor = new statoscope.controls.EditorBar(this.item.config.title,
                 getMarkTypes().map(type => ({
                     value: type,
                     label: getMarkName(type)
                 })), this.item.config.type);
-            var save = new view.controls.IconButton("images/controls/save.svg");
-            save.title = common.i18n.tr("Save");
-            save.onClick.addHandler(() => {
-                this.item.config.title = title.value;
-                var typeChanged = this.item.config.type !== type.value;
-                this.item.config.type = type.value;
+            
+            editor.onSaveClick.addHandler(() => {
+                this.item.config.title = editor.titleText;
+                var typeChanged = this.item.config.type !== editor.selectedType;
+                this.item.config.type = editor.selectedType;
                 storage.instance().saveDayConfig(this._dayInfo.dayConfig);
 
                 if (typeChanged) {
@@ -42,9 +37,8 @@ module statoscope.marks {
                 }
                 this.settings = false;
             });
-            var remove = new view.controls.IconButton("images/controls/remove.svg");
-            remove.title = common.i18n.tr("Remove");
-            remove.onClick.addHandler(() => {
+            
+            editor.onRemoveClick.addHandler(() => {
                 var result = this.element.classList.contains("new") ||
                     window.confirm(common.i18n.tr(
                         "This mark will be deleted from all days."));
@@ -57,8 +51,6 @@ module statoscope.marks {
                 }
             });
 
-            editor.addChild(title, type, save, remove);
-            title.element.focus();
             return editor;
         }
     }

@@ -1,43 +1,4 @@
 @import "../../theme";
 
 .s-mark-wrapper {
-  .n-setup {
-    top: 50%;
-    margin: -0.5 * @item-button-size 2px 0 2px;
-  }
-  
-  .n-editor {
-    margin-right: @item-button-size + 4px;
-
-    & > * {
-      vertical-align: middle;
-    }
-
-    .s-abstract-button {
-      .button-with-icon();
-      width: @item-button-size;
-      height: @item-button-size;
-      margin: 0 2px;
-    }
-
-    input {
-      margin-right: @item-padding;
-      width: 50%;
-    }
-
-    select {
-      margin-right: @item-padding;
-      width: ~"calc(50% - 92px)";
-    }
-  }
-}
-
-.s-mark-panel.editing {
-  .s-mark-wrapper {
-    &.new {
-      .n-editor {
-        margin-right: 0;
-      }
-    }
-  }
 }
